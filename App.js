@@ -9,7 +9,7 @@ import styles from "./styles/styles";
 
 export default function App() {
     return (
-        <View style={styles.container}>
+        <View>
             <StatusBar style="auto" />
             <LoginScreen />
         </View>
