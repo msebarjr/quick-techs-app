@@ -1,8 +1,9 @@
-import { View, Text } from "react-native";
+import { View } from "react-native";
 
 // Components
 import Input from "../UI/Input";
 
+// Styles
 import styles from "../styles/styles";
 
 function LoginForm() {
@@ -11,8 +12,7 @@ function LoginForm() {
 
     return (
         <View style={styles.formWrapper}>
-            <Input
-                label="Email"
+            <Input                
                 config={{
                     autoCapitalize: "none",
                     autoComplete: "off",
@@ -22,8 +22,7 @@ function LoginForm() {
                     onChangeText: emailChangeHandler,
                 }}
             />
-            <Input
-                label="Password"
+            <Input               
                 config={{
                     autoCapitalize: "none",
                     autoComplete: "off",
