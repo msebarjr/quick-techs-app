@@ -3,16 +3,13 @@ import { View } from "react-native";
 // Components
 import Input from "../UI/Input";
 
-// Styles
-import styles from "../styles/styles";
-
 function LoginForm() {
     function emailChangeHandler() {}
     function passwordChangeHandler() {}
 
     return (
-        <View style={styles.formWrapper}>
-            <Input                
+        <View>
+            <Input
                 config={{
                     autoCapitalize: "none",
                     autoComplete: "off",
@@ -22,12 +19,13 @@ function LoginForm() {
                     onChangeText: emailChangeHandler,
                 }}
             />
-            <Input               
+            <Input
                 config={{
                     autoCapitalize: "none",
                     autoComplete: "off",
                     autoCorrect: false,
                     placeholder: "Password",
+                    secureTextEntry: true,
                     onChangeText: passwordChangeHandler,
                 }}
             />

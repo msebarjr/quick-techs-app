@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { Text, View } from "react-native";
+import { SafeAreaView } from "react-native";
 
 // Components
 import LoginScreen from "./screens/LoginScreen";
@@ -9,9 +9,9 @@ import styles from "./styles/styles";
 
 export default function App() {
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.rootContainer}>
             <StatusBar style="auto" />
             <LoginScreen />
-        </View>
+        </SafeAreaView>
     );
 }

@@ -9,15 +9,18 @@ import {
 //Components
 import Button from "../UI/Button";
 import LoginForm from "../components/LoginForm";
+import KeyboardAvoidingComponent from "../components/KeyboardAvoidingComponent";
 
 // Styles
 import styles from "../styles/styles";
 
-const LoginScreen = () => {
+function LoginScreen() {
     const { width } = useWindowDimensions();
 
     return (
-        <View style={styles.subContainer}>
+        <KeyboardAvoidingComponent
+            style={[styles.container, { marginBottom: 45 }]}
+        >
             <Image
                 source={require("../assets/images/logo_transparent.png")}
                 style={[
@@ -28,16 +31,19 @@ const LoginScreen = () => {
                     styles.logo,
                 ]}
             />
-
-            <Text style={[, styles.centerText, styles.heading]}>Login</Text>
             <LoginForm />
-            <Button style={{ marginTop: 30 }}>Login</Button>
+            <View style={{ marginTop: 40 }}>
+                <Button>Login</Button>
+                <Button transparent style={{ marginTop: 15 }}>
+                    Create Account
+                </Button>
+            </View>
             <View style={styles.textWrapper}>
                 <Text style={styles.centerText}>Sign in as Client</Text>
                 <Text style={styles.centerText}>Sign in as Technician</Text>
             </View>
-        </View>
+        </KeyboardAvoidingComponent>
     );
-};
+}
 
 export default LoginScreen;

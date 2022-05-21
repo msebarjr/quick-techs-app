@@ -3,8 +3,8 @@ import GlobalStyles from "./globals";
 
 const styles = StyleSheet.create({
     button: {
-        borderRadius: 25,
-        padding: GlobalStyles.size.small,
+        borderRadius: 5,
+        padding: GlobalStyles.spacing.xs * 1.5,
         backgroundColor: GlobalStyles.colors.primary,
     },
     buttonText: {
@@ -19,7 +19,8 @@ const styles = StyleSheet.create({
     },
     container: {
         flex: 1,
-        paddingHorizontal: GlobalStyles.spacing.large,
+        justifyContent: "center",
+        paddingHorizontal: GlobalStyles.spacing.medium,
     },
     disabled: {
         backgroundColor: GlobalStyles.colors.primary,
@@ -29,13 +30,8 @@ const styles = StyleSheet.create({
         color: "rgba(255, 255, 255, .5)",
     },
     formContainer: { marginHorizontal: GlobalStyles.spacing.large },
-    formWrapper: {
-        marginTop: GlobalStyles.spacing.large,
-    },
     heading: {
         fontSize: GlobalStyles.size.xxl,
-        marginTop: -75,
-        fontWeight: "bold",
     },
     iosPressed: {
         opacity: 0.75,
@@ -47,20 +43,30 @@ const styles = StyleSheet.create({
     inputContainer: {
         borderBottomWidth: 1,
         borderBottomColor: GlobalStyles.colors.faded,
-        marginVertical: 10,
+        marginVertical: GlobalStyles.spacing.small,
     },
     logo: {
         alignSelf: "center",
-        marginVertical: GlobalStyles.spacing.xl,
+        marginTop: GlobalStyles.spacing.large,
     },
     removetext: {
         backgroundColor: GlobalStyles.colors.delete,
     },
-    subContainer: {
+    rootContainer: {
         flex: 1,
+        justifyContent: "center",
     },
+
     textWrapper: {
-        marginTop: GlobalStyles.spacing.large,
+        marginTop: GlobalStyles.spacing.medium,
+    },
+    transparent: {
+        backgroundColor: "transparent",
+        borderWidth: 1,
+        borderColor: GlobalStyles.colors.primary,
+    },
+    transparentText: {
+        color: GlobalStyles.colors.primary,
     },
 });
 
