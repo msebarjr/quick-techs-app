@@ -1,5 +1,5 @@
 import { View, Text, TextInput } from "react-native";
-import styles from "../styles/styles";
+import styles from "../../styles/styles";
 
 function Input({ config }) {
     return (

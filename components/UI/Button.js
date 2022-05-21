@@ -1,7 +1,7 @@
 import { Pressable, View, Text } from "react-native";
 
 // Styles
-import styles from "../styles/styles";
+import styles from "../../styles/styles";
 
 function Button({ children, onPress, disabled, remove, transparent, style }) {
     return (

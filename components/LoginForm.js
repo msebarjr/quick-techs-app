@@ -1,7 +1,7 @@
 import { View } from "react-native";
 
 // Components
-import Input from "../UI/Input";
+import Input from "./UI/Input";
 
 function LoginForm() {
     function emailChangeHandler() {}
