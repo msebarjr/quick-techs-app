@@ -45,9 +45,12 @@ const styles = StyleSheet.create({
         borderBottomColor: GlobalStyles.colors.faded,
         marginVertical: GlobalStyles.spacing.small,
     },
+    inputInvalid: {
+        backgroundColor: GlobalStyles.colors.delete,
+    },
     logo: {
         alignSelf: "center",
-        marginTop: GlobalStyles.spacing.large,
+        // marginTop: GlobalStyles.spacing.large,
     },
     removetext: {
         backgroundColor: GlobalStyles.colors.delete,
@@ -58,7 +61,7 @@ const styles = StyleSheet.create({
     },
 
     textWrapper: {
-        marginTop: GlobalStyles.spacing.medium,
+        marginTop: GlobalStyles.spacing.large,
     },
     transparent: {
         backgroundColor: "transparent",

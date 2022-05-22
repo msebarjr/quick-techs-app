@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { Alert } from "react-native";
+import { Alert, View, Text } from "react-native";
+
+// Components
 import KeyboardAvoidingComponent from "../KeyboardAvoidingComponent";
 import Logo from "../Logo";
 
@@ -61,6 +63,10 @@ function AuthContent({ isLogin, onAuthenticate }) {
             >
                 {isLogin ? "Create Account" : "Login"}
             </Button>
+            <View style={styles.textWrapper}>
+                <Text style={styles.centerText}>Sign in as Client</Text>
+                <Text style={styles.centerText}>Sign in as Technician</Text>
+            </View>
         </KeyboardAvoidingComponent>
     );
 }
