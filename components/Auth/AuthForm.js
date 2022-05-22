@@ -10,6 +10,7 @@ function AuthForm({ isLogin, onSubmit, credentialsInvalid }) {
     const [enteredPassword, setEnteredPassword] = useState("");
     const [enteredConfirmPassword, setEnteredConfirmPassword] = useState("");
 
+    // Desconstruct object and rename keys
     const {
         email: emailIsInvalid,
         password: passwordIsInvalid,

@@ -8,7 +8,7 @@ function Input({ config, isInvalid, onUpdateValue, value }) {
                 style={styles.input}
                 {...config}
                 onChangeText={onUpdateValue}
-                value={value}
+                value={isInvalid ? "WRONG" : value}
             />
         </View>
     );
