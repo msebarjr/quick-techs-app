@@ -5,7 +5,8 @@ const GlobalStyles = {
         faded: "rgba(0, 0, 0, 0.5)",
         completed: "rgba(14, 173, 49, 1)",
         pending: "rgba(220, 214, 63, 1)",
-        delete: "rgba(248, 21, 21, 1)",
+        delete: "rgba(243, 33, 33, 1)",
+        error: "rgba(236, 79, 79, 1)",
     },
     size: {
         small: 12,

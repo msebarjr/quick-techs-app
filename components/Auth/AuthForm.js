@@ -39,7 +39,7 @@ function AuthForm({ isLogin, onSubmit, credentialsInvalid }) {
                     placeholder: "Email",
                 }}
                 value={enteredEmail}
-                isInValid={emailIsInvalid}
+                isInvalid={emailIsInvalid}
                 onUpdateValue={emailInputHandler}
             />
             <Input
@@ -51,7 +51,7 @@ function AuthForm({ isLogin, onSubmit, credentialsInvalid }) {
                     secureTextEntry: true,
                 }}
                 value={enteredPassword}
-                isInValid={passwordIsInvalid}
+                isInvalid={passwordIsInvalid}
                 onUpdateValue={passwordInputHandler}
             />
             <Button onPress={submitHandler} style={{ marginTop: 30 }}>

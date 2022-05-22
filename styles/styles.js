@@ -38,18 +38,19 @@ const styles = StyleSheet.create({
     },
     input: {
         fontSize: GlobalStyles.size.large,
-        paddingBottom: GlobalStyles.spacing.xs,
+        paddingVertical: GlobalStyles.spacing.xs,
     },
     inputContainer: {
         borderBottomWidth: 1,
         borderBottomColor: GlobalStyles.colors.faded,
         marginVertical: GlobalStyles.spacing.small,
+        paddingHorizontal: GlobalStyles.spacing.xs,
     },
     inputInvalid: {
-        borderBottomColor: GlobalStyles.colors.delete,
+        backgroundColor: GlobalStyles.colors.error,
     },
     logo: {
-        alignSelf: "center",        
+        alignSelf: "center",
     },
     removetext: {
         backgroundColor: GlobalStyles.colors.delete,
@@ -57,7 +58,7 @@ const styles = StyleSheet.create({
     rootContainer: {
         flex: 1,
         justifyContent: "center",
-    },   
+    },
     transparent: {
         backgroundColor: "transparent",
         borderWidth: 1,
