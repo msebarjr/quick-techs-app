@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Alert, View, Text, useWindowDimensions } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 // Components
 import KeyboardAvoidingComponent from "../KeyboardAvoidingComponent";
@@ -12,22 +13,23 @@ import Button from "../UI/Button";
 
 function AuthContent({ isLogin, onAuthenticate }) {
     const { height } = useWindowDimensions();
+    const navigation = useNavigation();
     let margin = 40;
 
-    if (height > 700) margin = 100;
+    if (height > 700) margin = 80;
 
     const [credentialsInvalid, setCredentialsInvalid] = useState({
         email: false,
         password: false,
-        confirmPassword: false,
     });
 
     function switchAuthModeHandler() {
-        //Todo
+        if (isLogin) navigation.replace("Signup");
+        else navigation.replace("Login");
     }
 
     function submitHandler(credentials) {
-        let { email, password, confirmPassword } = credentials;
+        let { email, password } = credentials;
 
         // Removes all whitespaces from input
         email = email.trim();
@@ -36,19 +38,13 @@ function AuthContent({ isLogin, onAuthenticate }) {
         // Checks validity of inputs
         const emailIsValid = email.includes("@");
         const passwordIsValid = password.length > 6; // Firebase requires 6+ characters for password
-        const passwordsAreEqual = password === confirmPassword;
 
         // Creates alert if any input is invalid
-        if (
-            !emailIsValid ||
-            !passwordIsValid ||
-            (!isLogin && !passwordsAreEqual)
-        ) {
+        if (!emailIsValid || !passwordIsValid) {
             Alert.alert("Invalid Input", "Please check your credentials!");
             setCredentialsInvalid({
                 email: !emailIsValid,
                 password: !passwordIsValid,
-                confirmPassword: !passwordIsValid || !passwordsAreEqual,
             });
             return;
         }
@@ -59,6 +55,7 @@ function AuthContent({ isLogin, onAuthenticate }) {
     return (
         <KeyboardAvoidingComponent style={styles.container}>
             <Logo />
+
             <AuthForm
                 isLogin={isLogin}
                 onSubmit={submitHandler}

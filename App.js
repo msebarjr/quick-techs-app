@@ -15,7 +15,13 @@ const Stack = createNativeStackNavigator();
 // Stack for unauthenticated users
 function AuthStack() {
     return (
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Navigator
+            initialRouteName="Login"
+            screenOptions={{
+                headerShown: false,
+                animation: "slide_from_right",
+            }}
+        >
             <Stack.Screen name="Login" component={LoginScreen} />
             <Stack.Screen name="Signup" component={SignupScreen} />
         </Stack.Navigator>

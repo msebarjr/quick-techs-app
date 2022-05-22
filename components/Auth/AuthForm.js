@@ -8,14 +8,10 @@ import Input from "../UI/Input";
 function AuthForm({ isLogin, onSubmit, credentialsInvalid }) {
     const [enteredEmail, setEnteredEmail] = useState("");
     const [enteredPassword, setEnteredPassword] = useState("");
-    const [enteredConfirmPassword, setEnteredConfirmPassword] = useState("");
 
     // Desconstruct object and rename keys
-    const {
-        email: emailIsInvalid,
-        password: passwordIsInvalid,
-        confirmPassword: passwordsDontMatch,
-    } = credentialsInvalid;
+    const { email: emailIsInvalid, password: passwordIsInvalid } =
+        credentialsInvalid;
 
     function emailInputHandler(enteredValue) {
         setEnteredEmail(enteredValue);
@@ -25,15 +21,10 @@ function AuthForm({ isLogin, onSubmit, credentialsInvalid }) {
         setEnteredPassword(enteredValue);
     }
 
-    function confirmPasswordInputHandler(enteredValue) {
-        setEnteredConfirmPassword(enteredValue);
-    }
-
     function submitHandler() {
         onSubmit({
             email: enteredEmail,
             password: enteredPassword,
-            confirmPassword: enteredConfirmPassword,
         });
     }
 
@@ -63,21 +54,6 @@ function AuthForm({ isLogin, onSubmit, credentialsInvalid }) {
                 isInValid={passwordIsInvalid}
                 onUpdateValue={passwordInputHandler}
             />
-
-            {!isLogin && (
-                <Input
-                    config={{
-                        autoCapitalize: "none",
-                        autoComplete: "off",
-                        autoCorrect: false,
-                        placeholder: "Confirm Password",
-                        secureTextEntry: true,
-                    }}
-                    value={enteredConfirmPassword}
-                    isInValid={passwordsDontMatch}
-                    onUpdateValue={confirmPasswordInputHandler}
-                />
-            )}
             <Button onPress={submitHandler} style={{ marginTop: 30 }}>
                 {isLogin ? "Login" : "Sign Up"}
             </Button>
