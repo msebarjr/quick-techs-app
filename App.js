@@ -12,6 +12,7 @@ import styles from "./styles/styles";
 
 const Stack = createNativeStackNavigator();
 
+// Stack for unauthenticated users
 function AuthStack() {
     return (
         <Stack.Navigator screenOptions={{ headerShown: false }}>
@@ -21,6 +22,7 @@ function AuthStack() {
     );
 }
 
+// Stack for authenticated users
 function AuthenticatedStack() {
     return (
         <Stack.Navigator>

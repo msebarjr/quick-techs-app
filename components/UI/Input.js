@@ -3,9 +3,9 @@ import styles from "../../styles/styles";
 
 function Input({ config, isInvalid, onUpdateValue, value }) {
     return (
-        <View style={styles.inputContainer}>
+        <View style={[styles.inputContainer, isInvalid && styles.inputInvalid]}>
             <TextInput
-                style={[styles.input, isInvalid && styles.inputInvalid]}
+                style={styles.input}
                 {...config}
                 onChangeText={onUpdateValue}
                 value={value}

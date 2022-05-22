@@ -46,11 +46,10 @@ const styles = StyleSheet.create({
         marginVertical: GlobalStyles.spacing.small,
     },
     inputInvalid: {
-        backgroundColor: GlobalStyles.colors.delete,
+        borderBottomColor: GlobalStyles.colors.delete,
     },
     logo: {
-        alignSelf: "center",
-        // marginTop: GlobalStyles.spacing.large,
+        alignSelf: "center",        
     },
     removetext: {
         backgroundColor: GlobalStyles.colors.delete,
@@ -58,11 +57,7 @@ const styles = StyleSheet.create({
     rootContainer: {
         flex: 1,
         justifyContent: "center",
-    },
-
-    textWrapper: {
-        marginTop: GlobalStyles.spacing.large,
-    },
+    },   
     transparent: {
         backgroundColor: "transparent",
         borderWidth: 1,
