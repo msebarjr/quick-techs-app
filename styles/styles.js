@@ -52,6 +52,9 @@ const styles = StyleSheet.create({
     logo: {
         alignSelf: "center",
     },
+    message: {
+      fontSize: GlobalStyles.size.large,
+    },
     removetext: {
         backgroundColor: GlobalStyles.colors.delete,
     },
