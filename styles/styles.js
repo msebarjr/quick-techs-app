@@ -30,9 +30,6 @@ const styles = StyleSheet.create({
         color: "rgba(255, 255, 255, .5)",
     },
     formContainer: { marginHorizontal: GlobalStyles.spacing.large },
-    heading: {
-        fontSize: GlobalStyles.size.xxl,
-    },
     iosPressed: {
         opacity: 0.75,
     },
@@ -53,7 +50,7 @@ const styles = StyleSheet.create({
         alignSelf: "center",
     },
     message: {
-      fontSize: GlobalStyles.size.large,
+        fontSize: GlobalStyles.size.large,
     },
     removetext: {
         backgroundColor: GlobalStyles.colors.delete,

@@ -1,27 +1,67 @@
 import { useState } from "react";
+import { Text, useWindowDimensions, View } from "react-native";
 
 // Components
-import AuthContent from "../components/Auth/AuthContent";
+import Button from "../components/UI/Button";
 import LoadingOverlay from "../components/UI/LoadingOverlay";
+import Logo from "../components/Logo";
 
 // Utils
 import { loginUser } from "../utils/auth";
 
-function LoginScreen() {
-    const [isAuthenticating, setIsAuthenticating] = useState(false);
+// Styles
+import styles from "../styles/styles";
+import LoginForm from "../components/Forms/LoginForm";
 
-    // Since createUser returns a Promise, async await here as well to have ability to add Loading Overlay
-    async function loginHandler({ email, password }) {
-        setIsAuthenticating(true); // True since user will be authenticating
-        await loginUser(email, password);
-        setIsAuthenticating(false); // False since user is created and no longer being authenticated
+function LoginScreen({ navigation }) {
+    // const [isAuthenticating, setIsAuthenticating] = useState(false);
+
+    // // Since createUser returns a Promise, async await here as well to have ability to add Loading Overlay
+    // async function loginHandler({ email, password }) {
+    //     setIsAuthenticating(true); // True since user will be authenticating
+    //     await loginUser(email, password);
+    //     setIsAuthenticating(false); // False since user is created and no longer being authenticated
+    // }
+
+    // if (isAuthenticating) {
+    //     return <LoadingOverlay message="Logging In..." />;
+    // }
+
+    const { height } = useWindowDimensions;
+    let marginTop = 40;
+
+    if (height > 700) marginTop = 80;
+
+    function createAccountHandler() {
+        navigation.replace("Signup");
     }
 
-    if (isAuthenticating) {
-        return <LoadingOverlay message="Logging In..." />;
-    }
+    return (
+        // <AuthContent isLogin onAuthenticate={loginHandler} />;
+        <View style={styles.container}>
+            <Logo />
 
-    return <AuthContent isLogin onAuthenticate={loginHandler} />;
+            {/* <AuthForm
+                isLogin={isLogin}
+                onSubmit={submitHandler}
+                credentialsInvalid={credentialsInvalid}
+            /> */}
+            {/* <Text style={styles.heading}>Login</Text> */}
+            <LoginForm />
+            <Button style={{ marginTop: 30 }}>Login</Button>
+            <Button
+                style={{ marginTop: 15 }}
+                transparent
+                onPress={createAccountHandler}
+            >
+                Create Account
+            </Button>
+            <View style={{ marginTop: marginTop }}>
+                <Text style={styles.centerText}>Sign in as Client</Text>
+                <Text style={styles.centerText}>Sign in as Technician</Text>
+            </View>
+        </View>
+    );
 }
 
 export default LoginScreen;

@@ -10,6 +10,7 @@ import Logo from "../Logo";
 import styles from "../../styles/styles";
 import AuthForm from "./AuthForm";
 import Button from "../UI/Button";
+import { validateEmail, validatePassword } from "../../utils/validate";
 
 function AuthContent({ isLogin, onAuthenticate }) {
     const { height } = useWindowDimensions();
@@ -29,15 +30,11 @@ function AuthContent({ isLogin, onAuthenticate }) {
     }
 
     function submitHandler(credentials) {
-        let { email, password } = credentials;
-
-        // Removes all whitespaces from input
-        email = email.trim();
-        password = password.trim();
+        let { email, password } = credentials;      
 
         // Checks validity of inputs
-        const emailIsValid = email.includes("@");
-        const passwordIsValid = password.length > 6; // Firebase requires 6+ characters for password
+        const emailIsValid = validateEmail(email);
+        const passwordIsValid = validatePassword(password); // Firebase requires 6+ characters for password
 
         // Creates alert if any input is invalid
         if (!emailIsValid || !passwordIsValid) {
