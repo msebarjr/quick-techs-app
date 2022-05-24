@@ -5,7 +5,7 @@ import styles from "../../styles/styles";
 
 function LoadingOverlay({ message }) {
     return (
-        <View style={[styles.container, { alignItems: "center" }]}>
+        <View style={[styles.flexContainer, { alignItems: "center" }]}>
             <Text style={styles.message}>{message}</Text>
             <ActivityIndicator size="large" />
         </View>

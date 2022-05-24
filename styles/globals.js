@@ -6,7 +6,8 @@ const GlobalStyles = {
         completed: "rgba(14, 173, 49, 1)",
         pending: "rgba(220, 214, 63, 1)",
         delete: "rgba(243, 33, 33, 1)",
-        error: "rgba(236, 79, 79, .75)",
+        error: "rgba(239, 207, 204, 1)",
+        errorText: "rgba(198, 40, 40, 1)",
     },
     size: {
         small: 12,

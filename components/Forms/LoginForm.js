@@ -1,10 +1,34 @@
+import { useState } from "react";
+import { View } from "react-native";
+
 // Components
+import CustomButton from "../UI/CustomButton";
 import Input from "../UI/Input";
 import KeyboardAvoidingComponent from "../KeyboardAvoidingComponent";
 
-function LoginForm() {
+function LoginForm({ onSubmit, credentialsInvalid }) {
+    const [enteredEmail, setEnteredEmail] = useState("");
+    const [enteredPassword, setEnteredPassword] = useState("");
+
+    const { emailInvalid, passwordInvalid } = credentialsInvalid;
+
+    function emailInputHandler(enteredValue) {
+        setEnteredEmail(enteredValue);
+    }
+
+    function passwordInputHandler(enteredValue) {
+        setEnteredPassword(enteredValue);
+    }
+
+    function loginHandler() {
+        onSubmit({
+            email: enteredEmail,
+            password: enteredPassword,
+        });
+    }
+
     return (
-        <KeyboardAvoidingComponent>
+        <View>
             <Input
                 config={{
                     autoCapitalize: "none",
@@ -13,9 +37,9 @@ function LoginForm() {
                     keyboardType: "email-address",
                     placeholder: "Email",
                 }}
-                // value={enteredEmail}
-                // isInvalid={emailIsInvalid}
-                // onUpdateValue={emailInputHandler}
+                value={enteredEmail}
+                isInvalid={emailInvalid}
+                onUpdateValue={emailInputHandler}
             />
             <Input
                 config={{
@@ -25,11 +49,14 @@ function LoginForm() {
                     placeholder: "Password",
                     secureTextEntry: true,
                 }}
-                // value={enteredPassword}
-                // isInvalid={passwordIsInvalid}
-                // onUpdateValue={passwordInputHandler}
+                value={enteredPassword}
+                isInvalid={passwordInvalid}
+                onUpdateValue={passwordInputHandler}
             />
-        </KeyboardAvoidingComponent>
+            <CustomButton style={{ marginTop: 30 }} onPress={loginHandler}>
+                Login
+            </CustomButton>
+        </View>
     );
 }
 

@@ -8,7 +8,7 @@ function Input({ config, isInvalid, onUpdateValue, value }) {
                 style={styles.input}
                 {...config}
                 onChangeText={onUpdateValue}
-                placeholderTextColor={isInvalid && "white"}
+                placeholderTextColor={isInvalid && "rgba(198, 40, 40, 1)"}
                 value={value}
             />
         </View>
