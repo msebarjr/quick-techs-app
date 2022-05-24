@@ -37,7 +37,6 @@ const styles = StyleSheet.create({
     heading: {
         marginVertical: GlobalStyles.spacing.large,
         fontSize: GlobalStyles.size.xl,
-        // fontWeight: "semi-bold",
         alignSelf: "center",
     },
     iconWrapper: {
