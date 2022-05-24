@@ -1,15 +1,33 @@
 import { useState } from "react";
 import { Pressable, Text, View } from "react-native";
 
-import IconImage from "../components/IconImage";
+// Components
 import CustomButton from "../components/UI/CustomButton";
+import IconImage from "../components/IconImage";
+import LoadingOverlay from "../components/UI/LoadingOverlay";
 
 // Styles
 import styles from "../styles/styles";
 
-function CreateProfileScreen() {
+// Utils
+import { createUser } from "../utils/auth";
+
+function CreateProfileScreen({ route }) {
     const [disableClientButton, setDisableClientButton] = useState(true);
     const [disableTechButton, setDisableTechButton] = useState(true);
+    const [isAuthenticating, setIsAuthenticating] = useState(false);
+
+    const { email, password } = route.params;
+
+    async function authenticateUser(email, password) {
+        setIsAuthenticating(true);
+        await createUser(email, password);
+        setIsAuthenticating(false);
+    }
+
+    if (isAuthenticating) {
+        return <LoadingOverlay message="Creating Account..." />;
+    }
 
     function uploadPhotoHandler() {
         console.log("Photo uploaded!");
@@ -48,6 +66,7 @@ function CreateProfileScreen() {
             <CustomButton
                 style={{ marginTop: 100 }}
                 disabled={disableClientButton && disableTechButton}
+                onPress={authenticateUser.bind(this, email, password)}
             >
                 Create Account
             </CustomButton>

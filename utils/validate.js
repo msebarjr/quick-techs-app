@@ -6,6 +6,6 @@ export function validatePassword(password) {
     return password.trim().length > 6;
 }
 
-export function validateaName(name) {
+export function validateName(name) {
     return name.trim().length > 0;
 }

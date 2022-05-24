@@ -18,17 +18,6 @@ import KeyboardAvoidingComponent from "../components/KeyboardAvoidingComponent";
 function LoginScreen({ navigation }) {
     const [isAuthenticating, setIsAuthenticating] = useState(false);
 
-    // // Since createUser returns a Promise, async await here as well to have ability to add Loading Overlay
-    // async function loginHandler({ email, password }) {
-    //     setIsAuthenticating(true); // True since user will be authenticating
-    //     await loginUser(email, password);
-    //     setIsAuthenticating(false); // False since user is created and no longer being authenticated
-    // }
-
-    // if (isAuthenticating) {
-    //     return <LoadingOverlay message="Logging In..." />;
-    // }
-
     const { height } = useWindowDimensions;
     let marginTop = 40;
 
@@ -62,6 +51,7 @@ function LoginScreen({ navigation }) {
                 "Invalid Crendentials",
                 "Please check your credentials"
             );
+            
             setCredentialsInvalid({
                 emailInvalid: !emailIsValid,
                 passwordInvalid: !passwordIsValid,
@@ -74,15 +64,8 @@ function LoginScreen({ navigation }) {
     }
 
     return (
-        // <AuthContent isLogin onAuthenticate={loginHandler} />;
         <KeyboardAvoidingComponent style={styles.flexContainer}>
             <Logo />
-
-            {/* <AuthForm
-                isLogin={isLogin}
-                onSubmit={submitHandler}
-                credentialsInvalid={credentialsInvalid}
-            /> */}
 
             <LoginForm
                 onSubmit={submitLoginHandler}

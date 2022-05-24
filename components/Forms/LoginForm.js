@@ -4,7 +4,6 @@ import { View } from "react-native";
 // Components
 import CustomButton from "../UI/CustomButton";
 import Input from "../UI/Input";
-import KeyboardAvoidingComponent from "../KeyboardAvoidingComponent";
 
 function LoginForm({ onSubmit, credentialsInvalid }) {
     const [enteredEmail, setEnteredEmail] = useState("");

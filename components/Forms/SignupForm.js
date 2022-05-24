@@ -1,19 +1,48 @@
-// Components
-import Input from "../UI/Input";
-import KeyboardAvoidingComponent from "../KeyboardAvoidingComponent";
+import { useState } from "react";
+import { View } from "react-native";
 
-function SignupForm() {
+// Components
+import CustomButton from "../UI/CustomButton";
+import Input from "../UI/Input";
+
+function SignupForm({ onSubmit, credentialsInvalid }) {
+    const [enteredName, setEnteredName] = useState("");
+    const [enteredEmail, setEnteredEmail] = useState("");
+    const [enteredPassword, setEnteredPassword] = useState("");
+
+    const { nameInvalid, emailInvalid, passwordInvalid } = credentialsInvalid;
+
+    function nameInputHandler(enteredValue) {
+        setEnteredName(enteredValue);
+    }
+
+    function emailInputHandler(enteredValue) {
+        setEnteredEmail(enteredValue);
+    }
+
+    function passwordInputHandler(enteredValue) {
+        setEnteredPassword(enteredValue);
+    }
+
+    function signupHandler() {
+        onSubmit({
+            name: enteredName,
+            email: enteredEmail,
+            password: enteredPassword,
+        });
+    }
+
     return (
-        <KeyboardAvoidingComponent>
+        <View>
             <Input
                 config={{
                     autoCapitalize: "words",
                     autoComplete: "off",
                     placeholder: "Name",
                 }}
-                // value={enteredEmail}
-                // isInvalid={emailIsInvalid}
-                // onUpdateValue={emailInputHandler}
+                value={enteredName}
+                isInvalid={nameInvalid}
+                onUpdateValue={nameInputHandler}
             />
             <Input
                 config={{
@@ -23,9 +52,9 @@ function SignupForm() {
                     keyboardType: "email-address",
                     placeholder: "Email",
                 }}
-                // value={enteredEmail}
-                // isInvalid={emailIsInvalid}
-                // onUpdateValue={emailInputHandler}
+                value={enteredEmail}
+                isInvalid={emailInvalid}
+                onUpdateValue={emailInputHandler}
             />
             <Input
                 config={{
@@ -35,11 +64,14 @@ function SignupForm() {
                     placeholder: "Password",
                     secureTextEntry: true,
                 }}
-                // value={enteredPassword}
-                // isInvalid={passwordIsInvalid}
-                // onUpdateValue={passwordInputHandler}
+                value={enteredPassword}
+                isInvalid={passwordInvalid}
+                onUpdateValue={passwordInputHandler}
             />
-        </KeyboardAvoidingComponent>
+            <CustomButton style={{ marginTop: 30 }} onPress={signupHandler}>
+                Create Account
+            </CustomButton>
+        </View>
     );
 }
 
