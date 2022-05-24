@@ -2,7 +2,7 @@ import { useState } from "react";
 import { View } from "react-native";
 
 // Components
-import Button from "../components/UI/Button";
+import CustomButton from "../components/UI/CustomButton";
 import LoadingOverlay from "../components/UI/LoadingOverlay";
 import Logo from "../components/Logo";
 import SignupForm from "../components/Forms/SignupForm";
@@ -32,12 +32,12 @@ function SignupScreen({ navigation }) {
     }
 
     function createAccountHandler() {
-        navigation.navigate("Welcome");
+        navigation.navigate("Create Profile");
     }
 
     return (
         // <AuthContent onAuthenticate={signupHandler} />;
-        <View style={styles.container}>
+        <View style={styles.flexContainer}>
             <Logo />
 
             {/* <AuthForm
@@ -46,16 +46,19 @@ function SignupScreen({ navigation }) {
                 credentialsInvalid={credentialsInvalid}
             /> */}
             <SignupForm />
-            <Button style={{ marginTop: 30 }} onPress={createAccountHandler}>
+            <CustomButton
+                style={{ marginTop: 30 }}
+                onPress={createAccountHandler}
+            >
                 Create Account
-            </Button>
-            <Button
+            </CustomButton>
+            <CustomButton
                 style={{ marginTop: 15 }}
                 transparent
                 onPress={loginHandler}
             >
                 Login
-            </Button>
+            </CustomButton>
         </View>
     );
 }

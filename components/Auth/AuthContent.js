@@ -9,7 +9,7 @@ import Logo from "../Logo";
 // Styles
 import styles from "../../styles/styles";
 import AuthForm from "./AuthForm";
-import Button from "../UI/Button";
+import CustomButton from "../UI/CustomButton";
 import { validateEmail, validatePassword } from "../../utils/validate";
 
 function AuthContent({ isLogin, onAuthenticate }) {
@@ -30,7 +30,7 @@ function AuthContent({ isLogin, onAuthenticate }) {
     }
 
     function submitHandler(credentials) {
-        let { email, password } = credentials;      
+        let { email, password } = credentials;
 
         // Checks validity of inputs
         const emailIsValid = validateEmail(email);
@@ -58,13 +58,13 @@ function AuthContent({ isLogin, onAuthenticate }) {
                 onSubmit={submitHandler}
                 credentialsInvalid={credentialsInvalid}
             />
-            <Button
+            <CustomButton
                 style={{ marginTop: 15 }}
                 transparent
                 onPress={switchAuthModeHandler}
             >
                 {isLogin ? "Create Account" : "Login"}
-            </Button>
+            </CustomButton>
             <View style={{ marginTop: margin }}>
                 <Text style={styles.centerText}>Sign in as Client</Text>
                 <Text style={styles.centerText}>Sign in as Technician</Text>

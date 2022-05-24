@@ -4,11 +4,13 @@ import { StatusBar } from "expo-status-bar";
 import { View } from "react-native";
 
 // Components
+import CreateProfileScreen from "./screens/CreateProfileScreen";
 import LoginScreen from "./screens/LoginScreen";
 import SignupScreen from "./screens/SignupScreen";
 
 // External StyleSheet
 import styles from "./styles/styles";
+import GlobalStyles from "./styles/globals";
 
 const Stack = createNativeStackNavigator();
 
@@ -18,12 +20,29 @@ function AuthStack() {
         <Stack.Navigator
             initialRouteName="Login"
             screenOptions={{
-                headerShown: false,
                 animation: "slide_from_right",
             }}
         >
-            <Stack.Screen name="Login" component={LoginScreen} />
-            <Stack.Screen name="Signup" component={SignupScreen} />
+            <Stack.Screen
+                name="Login"
+                component={LoginScreen}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="Signup"
+                component={SignupScreen}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="Create Profile"
+                component={CreateProfileScreen}
+                options={{
+                    headerStyle: {
+                        backgroundColor: GlobalStyles.colors.primary,
+                    },
+                    headerTintColor: "white",
+                }}
+            />
         </Stack.Navigator>
     );
 }

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Text, useWindowDimensions, View } from "react-native";
 
 // Components
-import Button from "../components/UI/Button";
+import CustomButton from "../components/UI/CustomButton";
 import LoadingOverlay from "../components/UI/LoadingOverlay";
 import Logo from "../components/Logo";
 
@@ -38,7 +38,7 @@ function LoginScreen({ navigation }) {
 
     return (
         // <AuthContent isLogin onAuthenticate={loginHandler} />;
-        <View style={styles.container}>
+        <View style={styles.flexContainer}>
             <Logo />
 
             {/* <AuthForm
@@ -48,14 +48,14 @@ function LoginScreen({ navigation }) {
             /> */}
             {/* <Text style={styles.heading}>Login</Text> */}
             <LoginForm />
-            <Button style={{ marginTop: 30 }}>Login</Button>
-            <Button
+            <CustomButton style={{ marginTop: 30 }}>Login</CustomButton>
+            <CustomButton
                 style={{ marginTop: 15 }}
                 transparent
                 onPress={createAccountHandler}
             >
                 Create Account
-            </Button>
+            </CustomButton>
             <View style={{ marginTop: marginTop }}>
                 <Text style={styles.centerText}>Sign in as Client</Text>
                 <Text style={styles.centerText}>Sign in as Technician</Text>

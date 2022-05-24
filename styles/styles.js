@@ -19,17 +19,37 @@ const styles = StyleSheet.create({
     },
     container: {
         flex: 1,
-        justifyContent: "center",
         paddingHorizontal: GlobalStyles.spacing.medium,
     },
     disabled: {
         backgroundColor: GlobalStyles.colors.primary,
-        opacity: 0.5,
+        opacity: 0.75,
     },
     disabledText: {
         color: "rgba(255, 255, 255, .5)",
     },
+    flexContainer: {
+        flex: 1,
+        justifyContent: "center",
+        paddingHorizontal: GlobalStyles.spacing.medium,
+    },
     formContainer: { marginHorizontal: GlobalStyles.spacing.large },
+    heading: {
+        marginVertical: GlobalStyles.spacing.large,
+        fontSize: GlobalStyles.size.xl,
+        // fontWeight: "semi-bold",
+        alignSelf: "center",
+    },
+    iconWrapper: {
+        width: GlobalStyles.size.xl * 7,
+        height: GlobalStyles.size.xl * 7,
+        borderRadius: (GlobalStyles.size.xl * 7) / 2,
+        backgroundColor: "rgba(0, 0, 0, .3)",
+        alignSelf: "center",
+        marginTop: GlobalStyles.spacing.large,
+        justifyContent: "center",
+        alignItems: "center",
+    },
     iosPressed: {
         opacity: 0.75,
     },

@@ -1,6 +1,9 @@
 export const jobs = [
-  "Plumber",
-  "Painter",
-  "Cleaning Service",
-  ""
-]
+    "Cleaning Service",
+    "Developer",
+    "Electrician",
+    "Handyman",
+    "Lawn Maintenance",
+    "Plumber",
+    "Painter",
+];
