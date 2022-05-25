@@ -69,6 +69,14 @@ function AuthenticatedStack() {
                     backgroundColor: GlobalStyles.colors.primary,
                 },
                 headerTintColor: "white",
+                headerRight: ({ tintColor }) => (
+                    <IconButton
+                        icon="exit"
+                        color={tintColor}
+                        size={24}
+                        onPress={() => dispatch(logout())}
+                    />
+                ),
             }}
         >
             <Stack.Screen
@@ -76,14 +84,6 @@ function AuthenticatedStack() {
                 component={TechHomeScreen}
                 options={{
                     title: "Welcome",
-                    headerRight: ({ tintColor }) => (
-                        <IconButton
-                            icon="exit"
-                            color={tintColor}
-                            size={24}
-                            onPress={() => dispatch(logout())}
-                        />
-                    ),
                 }}
             />
         </Stack.Navigator>
