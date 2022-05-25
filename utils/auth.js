@@ -15,7 +15,6 @@ async function authenticate(mode, email, password) {
     return response.data.idToken;
 }
 
-// Function will return a Promise once the request is done due to async await
 export function createUser(email, password) {
     return authenticate("signUp", email, password);
 }

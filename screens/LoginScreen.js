@@ -10,12 +10,12 @@ import Logo from "../components/Logo";
 // Utils
 import { loginUser } from "../utils/auth";
 import { validateEmail, validatePassword } from "../utils/validate";
+import { authenticate } from "../redux/reducers/authSlice";
 
 // Styles
 import styles from "../styles/styles";
 import LoginForm from "../components/Forms/LoginForm";
 import KeyboardAvoidingComponent from "../components/KeyboardAvoidingComponent";
-import { authenticate } from "../redux/reducers/authSlice";
 
 function LoginScreen({ navigation }) {
     const dispatch = useDispatch();
@@ -37,6 +37,7 @@ function LoginScreen({ navigation }) {
 
         try {
             const token = await loginUser(email, password);
+            dispatch(authenticate(token));
         } catch (error) {
             let errorMessage = "";
 
@@ -50,11 +51,8 @@ function LoginScreen({ navigation }) {
                     "The user account has been disabled by an administrator.";
 
             Alert.alert("Authentication failed!", errorMessage);
+            setIsAuthenticating(false);
         }
-
-        dispatch(authenticate(token));
-
-        setIsAuthenticating(false);
     }
 
     if (isAuthenticating) {

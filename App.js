@@ -63,18 +63,19 @@ function Navigation() {
     const { isAuthenticated } = useSelector((state) => state.auth);
     return (
         <NavigationContainer>
-            {isAuthenticated ? <AuthenticatedStack /> : <AuthStack />}
+            {isAuthenticated && <AuthenticatedStack />}
+            {!isAuthenticated && <AuthStack />}
         </NavigationContainer>
     );
 }
 
 export default function App() {
     return (
-        <View style={styles.rootContainer}>
-            <StatusBar style="auto" />
-            <Provider store={store}>
+        <Provider store={store}>
+            <View style={styles.rootContainer}>
+                <StatusBar style="auto" />
                 <Navigation />
-            </Provider>
-        </View>
+            </View>
+        </Provider>
     );
 }

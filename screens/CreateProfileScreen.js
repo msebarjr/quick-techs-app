@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Alert, Pressable, Text, View } from "react-native";
-import { Pressable, Text, View } from "react-native";
 import { useDispatch } from "react-redux";
 
 // Components
@@ -8,11 +7,12 @@ import CustomButton from "../components/UI/CustomButton";
 import IconImage from "../components/IconImage";
 import LoadingOverlay from "../components/UI/LoadingOverlay";
 
-// Styles
-import styles from "../styles/styles";
-
 // Utils
 import { createUser } from "../utils/auth";
+import { authenticate } from "../redux/reducers/authSlice";
+
+// Styles
+import styles from "../styles/styles";
 
 function CreateProfileScreen({ route }) {
     const dispatch = useDispatch();
@@ -28,13 +28,11 @@ function CreateProfileScreen({ route }) {
 
         try {
             const token = await createUser(email, password);
+            dispatch(authenticate(token));            
         } catch (error) {
             Alert.alert("Authentication Failed", "Could not create account.");
+            setIsAuthenticating(false);
         }
-
-        dispatch(authenticate(token));
-
-        setIsAuthenticating(false);
     }
 
     if (isAuthenticating) {
