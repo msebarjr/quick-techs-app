@@ -2,13 +2,17 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
 import { View } from "react-native";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
 
 // Components
+import CreateProfileScreen from "./screens/CreateProfileScreen";
 import LoginScreen from "./screens/LoginScreen";
 import SignupScreen from "./screens/SignupScreen";
 
 // External StyleSheet
 import styles from "./styles/styles";
+import GlobalStyles from "./styles/globals";
 
 const Stack = createNativeStackNavigator();
 
@@ -18,12 +22,29 @@ function AuthStack() {
         <Stack.Navigator
             initialRouteName="Login"
             screenOptions={{
-                headerShown: false,
                 animation: "slide_from_right",
             }}
         >
-            <Stack.Screen name="Login" component={LoginScreen} />
-            <Stack.Screen name="Signup" component={SignupScreen} />
+            <Stack.Screen
+                name="Login"
+                component={LoginScreen}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="Signup"
+                component={SignupScreen}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="Create Profile"
+                component={CreateProfileScreen}
+                options={{
+                    headerStyle: {
+                        backgroundColor: GlobalStyles.colors.primary,
+                    },
+                    headerTintColor: "white",
+                }}
+            />
         </Stack.Navigator>
     );
 }
@@ -39,9 +60,11 @@ function AuthenticatedStack() {
 
 function Navigation() {
     return (
-        <NavigationContainer>
-            <AuthStack />
-        </NavigationContainer>
+        <Provider store={store}>
+            <NavigationContainer>
+                <AuthStack />
+            </NavigationContainer>
+        </Provider>
     );
 }
 

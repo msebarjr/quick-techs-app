@@ -3,7 +3,14 @@ import { Pressable, View, Text } from "react-native";
 // Styles
 import styles from "../../styles/styles";
 
-function Button({ children, onPress, disabled, remove, transparent, style }) {
+function CustomButton({
+    children,
+    onPress,
+    disabled,
+    remove,
+    transparent,
+    style,
+}) {
     return (
         <View style={style}>
             <Pressable
@@ -34,4 +41,4 @@ function Button({ children, onPress, disabled, remove, transparent, style }) {
     );
 }
 
-export default Button;
+export default CustomButton;

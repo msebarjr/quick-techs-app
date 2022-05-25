@@ -2,16 +2,14 @@ import { useState } from "react";
 import { View } from "react-native";
 
 // Components
-import Button from "../UI/Button";
+import CustomButton from "../UI/CustomButton";
 import Input from "../UI/Input";
 
-function AuthForm({ isLogin, onSubmit, credentialsInvalid }) {
+function LoginForm({ onSubmit, credentialsInvalid }) {
     const [enteredEmail, setEnteredEmail] = useState("");
     const [enteredPassword, setEnteredPassword] = useState("");
 
-    // Desconstruct object and rename keys
-    const { email: emailIsInvalid, password: passwordIsInvalid } =
-        credentialsInvalid;
+    const { emailInvalid, passwordInvalid } = credentialsInvalid;
 
     function emailInputHandler(enteredValue) {
         setEnteredEmail(enteredValue);
@@ -21,7 +19,7 @@ function AuthForm({ isLogin, onSubmit, credentialsInvalid }) {
         setEnteredPassword(enteredValue);
     }
 
-    function submitHandler() {
+    function loginHandler() {
         onSubmit({
             email: enteredEmail,
             password: enteredPassword,
@@ -39,7 +37,7 @@ function AuthForm({ isLogin, onSubmit, credentialsInvalid }) {
                     placeholder: "Email",
                 }}
                 value={enteredEmail}
-                isInvalid={emailIsInvalid}
+                isInvalid={emailInvalid}
                 onUpdateValue={emailInputHandler}
             />
             <Input
@@ -51,14 +49,14 @@ function AuthForm({ isLogin, onSubmit, credentialsInvalid }) {
                     secureTextEntry: true,
                 }}
                 value={enteredPassword}
-                isInvalid={passwordIsInvalid}
+                isInvalid={passwordInvalid}
                 onUpdateValue={passwordInputHandler}
             />
-            <Button onPress={submitHandler} style={{ marginTop: 30 }}>
-                {isLogin ? "Login" : "Sign Up"}
-            </Button>
+            <CustomButton style={{ marginTop: 30 }} onPress={loginHandler}>
+                Login
+            </CustomButton>
         </View>
     );
 }
 
-export default AuthForm;
+export default LoginForm;
