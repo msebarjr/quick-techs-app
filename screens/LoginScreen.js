@@ -30,7 +30,24 @@ function LoginScreen({ navigation }) {
 
     async function authenticateUser({ email, password }) {
         setIsAuthenticating(true);
-        await loginUser(email, password);
+
+        try {
+            await loginUser(email, password);
+        } catch (error) {
+            let errorMessage = "";
+
+            if (error.response.data.error.message === "EMAIL_NOT_FOUND")
+                errorMessage =
+                    "There is no user record corresponding to this email";
+            if (error.response.data.error.message === "INVALID_PASSWORD")
+                errorMessage = "The password is invalid";
+            if (error.response.data.error.message === "USER_DISABLED")
+                errorMessage =
+                    "The user account has been disabled by an administrator.";
+
+            Alert.alert("Authentication failed!", errorMessage);
+        }
+
         setIsAuthenticating(false);
     }
 
@@ -51,7 +68,7 @@ function LoginScreen({ navigation }) {
                 "Invalid Crendentials",
                 "Please check your credentials"
             );
-            
+
             setCredentialsInvalid({
                 emailInvalid: !emailIsValid,
                 passwordInvalid: !passwordIsValid,

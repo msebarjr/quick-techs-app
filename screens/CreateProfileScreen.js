@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Pressable, Text, View } from "react-native";
+import { Alert, Pressable, Text, View } from "react-native";
 
 // Components
 import CustomButton from "../components/UI/CustomButton";
@@ -21,7 +21,13 @@ function CreateProfileScreen({ route }) {
 
     async function authenticateUser(email, password) {
         setIsAuthenticating(true);
-        await createUser(email, password);
+
+        try {
+            await createUser(email, password);
+        } catch (error) {
+            Alert.alert("Authentication Failed", "Could not create account.");
+        }
+
         setIsAuthenticating(false);
     }
 
