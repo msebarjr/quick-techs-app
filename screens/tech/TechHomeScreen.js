@@ -1,11 +1,11 @@
 import { View, Text } from "react-native";
 
-function WelcomeScreen() {
+function TechHomeScreen() {
     return (
         <View>
-            <Text>Welcome Screen</Text>
+            <Text>CustomerHomeScreen</Text>
         </View>
     );
 }
 
-export default WelcomeScreen;
+export default TechHomeScreen;
