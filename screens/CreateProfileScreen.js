@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Pressable, Text, View } from "react-native";
+import { useDispatch } from "react-redux";
 
 // Components
 import CustomButton from "../components/UI/CustomButton";
@@ -13,6 +14,8 @@ import styles from "../styles/styles";
 import { createUser } from "../utils/auth";
 
 function CreateProfileScreen({ route }) {
+    const dispatch = useDispatch();
+
     const [disableClientButton, setDisableClientButton] = useState(true);
     const [disableTechButton, setDisableTechButton] = useState(true);
     const [isAuthenticating, setIsAuthenticating] = useState(false);
@@ -21,7 +24,10 @@ function CreateProfileScreen({ route }) {
 
     async function authenticateUser(email, password) {
         setIsAuthenticating(true);
-        await createUser(email, password);
+
+        const token = await createUser(email, password);
+        dispatch(authenticate(token));
+
         setIsAuthenticating(false);
     }
 
