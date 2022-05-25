@@ -2,6 +2,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
 import { View } from "react-native";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
 
 // Components
 import CreateProfileScreen from "./screens/CreateProfileScreen";
@@ -58,9 +60,11 @@ function AuthenticatedStack() {
 
 function Navigation() {
     return (
-        <NavigationContainer>
-            <AuthStack />
-        </NavigationContainer>
+        <Provider store={store}>
+            <NavigationContainer>
+                <AuthStack />
+            </NavigationContainer>
+        </Provider>
     );
 }
 
