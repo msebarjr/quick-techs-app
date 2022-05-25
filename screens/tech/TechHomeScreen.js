@@ -3,7 +3,7 @@ import { View, Text } from "react-native";
 function TechHomeScreen() {
     return (
         <View>
-            <Text>CustomerHomeScreen</Text>
+            <Text>TechHomeScreen</Text>
         </View>
     );
 }

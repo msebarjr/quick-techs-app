@@ -1,9 +1,11 @@
+import { useEffect, useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
 import { View } from "react-native";
 import { Provider, useDispatch, useSelector } from "react-redux";
-import { store } from "./redux/store";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import AppLoading from "expo-app-loading";
 
 // Components
 import CreateProfileScreen from "./screens/CreateProfileScreen";
@@ -13,11 +15,12 @@ import SignupScreen from "./screens/SignupScreen";
 import TechHomeScreen from "./screens/tech/TechHomeScreen";
 
 // External StyleSheet
-import styles from "./styles/styles";
 import GlobalStyles from "./styles/globals";
+import styles from "./styles/styles";
 
 // Utils
-import { logout } from "./redux/reducers/authSlice";
+import { login, logout } from "./redux/reducers/authSlice";
+import { store } from "./redux/store";
 
 const Stack = createNativeStackNavigator();
 
@@ -97,12 +100,31 @@ function Navigation() {
     );
 }
 
+function Root() {
+    const [isTryingLogin, setIsTryingLogin] = useState(true);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        async function fetchToken() {
+            const storedToken = await AsyncStorage.getItem("token");
+            if (storedToken) dispatch(login(storedToken));
+            setIsTryingLogin(false);
+        }
+
+        fetchToken();
+    }, []);
+
+    if (isTryingLogin) return <AppLoading />;
+
+    return <Navigation />;
+}
+
 export default function App() {
     return (
         <Provider store={store}>
             <View style={styles.rootContainer}>
                 <StatusBar style="auto" />
-                <Navigation />
+                <Root />
             </View>
         </Provider>
     );
