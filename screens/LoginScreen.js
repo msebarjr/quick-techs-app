@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Alert, Text, useWindowDimensions, View } from "react-native";
+import { useDispatch } from "react-redux";
 
 // Components
 import CustomButton from "../components/UI/CustomButton";
@@ -14,8 +15,11 @@ import { validateEmail, validatePassword } from "../utils/validate";
 import styles from "../styles/styles";
 import LoginForm from "../components/Forms/LoginForm";
 import KeyboardAvoidingComponent from "../components/KeyboardAvoidingComponent";
+import { authenticate } from "../redux/reducers/authSlice";
 
 function LoginScreen({ navigation }) {
+    const dispatch = useDispatch();
+
     const [isAuthenticating, setIsAuthenticating] = useState(false);
 
     const { height } = useWindowDimensions;
@@ -32,7 +36,7 @@ function LoginScreen({ navigation }) {
         setIsAuthenticating(true);
 
         try {
-            await loginUser(email, password);
+            const token = await loginUser(email, password);
         } catch (error) {
             let errorMessage = "";
 
@@ -47,6 +51,8 @@ function LoginScreen({ navigation }) {
 
             Alert.alert("Authentication failed!", errorMessage);
         }
+
+        dispatch(authenticate(token));
 
         setIsAuthenticating(false);
     }

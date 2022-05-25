@@ -2,13 +2,14 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
 import { View } from "react-native";
-import { Provider } from "react-redux";
+import { Provider, useSelector } from "react-redux";
 import { store } from "./redux/store";
 
 // Components
 import CreateProfileScreen from "./screens/CreateProfileScreen";
 import LoginScreen from "./screens/LoginScreen";
 import SignupScreen from "./screens/SignupScreen";
+import WelcomeScreen from "./screens/WelcomeScreen";
 
 // External StyleSheet
 import styles from "./styles/styles";
@@ -59,12 +60,11 @@ function AuthenticatedStack() {
 }
 
 function Navigation() {
+    const { isAuthenticated } = useSelector((state) => state.auth);
     return (
-        <Provider store={store}>
-            <NavigationContainer>
-                <AuthStack />
-            </NavigationContainer>
-        </Provider>
+        <NavigationContainer>
+            {isAuthenticated ? <AuthenticatedStack /> : <AuthStack />}
+        </NavigationContainer>
     );
 }
 
@@ -72,7 +72,9 @@ export default function App() {
     return (
         <View style={styles.rootContainer}>
             <StatusBar style="auto" />
-            <Navigation />
+            <Provider store={store}>
+                <Navigation />
+            </Provider>
         </View>
     );
 }

@@ -12,14 +12,14 @@ async function authenticate(mode, email, password) {
         returnSecureToken: true,
     });
 
-    console.log(response.data);
+    return response.data.idToken;
 }
 
 // Function will return a Promise once the request is done due to async await
-export async function createUser(email, password) {
-    await authenticate("signUp", email, password);
+export function createUser(email, password) {
+    return authenticate("signUp", email, password);
 }
 
-export async function loginUser(email, password) {
-    await authenticate("signInWithPassword", email, password);
+export function loginUser(email, password) {
+    return authenticate("signInWithPassword", email, password);
 }
