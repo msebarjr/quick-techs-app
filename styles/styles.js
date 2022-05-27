@@ -71,12 +71,47 @@ const styles = StyleSheet.create({
     message: {
         fontSize: GlobalStyles.size.large,
     },
+    profileImage: {
+        width: "100%",
+        height: "100%",
+        borderRadius: 50,
+    },
     removetext: {
         backgroundColor: GlobalStyles.colors.delete,
     },
     rootContainer: {
         flex: 1,
         justifyContent: "center",
+    },
+    techHomeGreeting: {
+        width: "100%",
+        alignSelf: "center",
+        alignItems: "center",
+        paddingVertical: GlobalStyles.spacing.large,
+        borderBottomWidth: 1,
+        borderBottomColor: GlobalStyles.colors.faded,
+    },
+    techName: {
+        color: GlobalStyles.colors.primary,
+        fontWeight: "bold",
+        fontSize: GlobalStyles.size.large,
+    },
+    techNotifications: {
+        margin: GlobalStyles.spacing.medium,
+        paddingVertical: GlobalStyles.spacing.small,
+        backgroundColor: GlobalStyles.colors.secondary,
+        borderRadius: 10,
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    techNotificationsText: {
+        color: GlobalStyles.colors.errorText,
+        fontWeight: "bold",
+    },
+    techWelcomeText: {
+        marginTop: GlobalStyles.spacing.small,
+        flexDirection: "row",
     },
     transparent: {
         backgroundColor: "transparent",
