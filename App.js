@@ -21,6 +21,7 @@ import styles from "./styles/styles";
 // Utils
 import { login, logout } from "./redux/reducers/authSlice";
 import { store } from "./redux/store";
+import LoadingOverlay from "./components/UI/LoadingOverlay";
 
 const Stack = createNativeStackNavigator();
 
@@ -114,7 +115,7 @@ function Root() {
         fetchToken();
     }, []);
 
-    if (isTryingLogin) return <AppLoading />;
+    if (isTryingLogin) return <LoadingOverlay message="Loggin in..." />;
 
     return <Navigation />;
 }

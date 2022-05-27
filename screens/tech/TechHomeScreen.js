@@ -1,7 +1,9 @@
-import { View, Text } from "react-native";
+import { View, Text, Button } from "react-native";
 import ProfileImage from "../../components/ProfileImage";
 import TechNotifications from "../../components/Tech/TechNotifications";
 import styles from "../../styles/styles";
+
+import { storeClient, storeTech } from "../../utils/http";
 
 function TechHomeScreen() {
     return (
@@ -14,6 +16,8 @@ function TechHomeScreen() {
                 </View>
             </View>
             <TechNotifications />
+            <Button onPress={storeClient} title="Store Client" />
+            <Button onPress={storeTech} title="Store Tech" />
         </View>
     );
 }
