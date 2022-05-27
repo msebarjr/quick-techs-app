@@ -92,7 +92,6 @@ function LoginScreen({ navigation }) {
                 onSubmit={submitLoginHandler}
                 credentialsInvalid={credentialsInvalid}
             />
-
             <CustomButton
                 style={{ marginTop: 15 }}
                 transparent
