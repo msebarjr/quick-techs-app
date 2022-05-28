@@ -1,8 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    id: null,
-    token: "",
+    id: null,    
     name: "",
     location: {
         long: "",
@@ -17,8 +16,7 @@ export const techSlice = createSlice({
     name: "tech",
     initialState,
     reducers: {
-        createTechProfile: (state, action) => {
-            state.token = action.payload.token;
+        createTechProfile: (state, action) => {            
             state.name = action.payload.name;
             state.isLoggedIn = action.payload.isLoggedIn;
         },

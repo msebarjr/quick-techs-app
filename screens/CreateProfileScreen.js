@@ -37,8 +37,7 @@ function CreateProfileScreen({ route }) {
             if (disableClientButton) createTech({ name, isLoggedIn: true });
             else createClient({ name, isLoggedIn: true });
 
-            dispatch(createTechProfile({ token, name, isLoggedIn: true }));
-
+            dispatch(createTechProfile({ name, isLoggedIn: true }));
             dispatch(authenticate(token));
         } catch (error) {
             Alert.alert("Authentication Failed", "Could not create account.");
