@@ -1,6 +1,6 @@
 import { View, Text } from "react-native";
 
-function CustomerHomeScreen() {
+function ClientHomeScreen() {
     return (
         <View>
             <Text>CustomerHomeScreen</Text>
@@ -8,4 +8,4 @@ function CustomerHomeScreen() {
     );
 }
 
-export default CustomerHomeScreen;
+export default ClientHomeScreen;

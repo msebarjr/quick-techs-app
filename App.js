@@ -24,6 +24,7 @@ import styles from "./styles/styles";
 // Utils
 import { login } from "./redux/reducers/authSlice";
 import { store } from "./redux/store";
+import ClientTabNavigator from "./navigation/client/ClientTabNavigator";
 
 const Stack = createNativeStackNavigator();
 
@@ -61,10 +62,16 @@ function UnauthenticatedStack() {
 
 function Navigation() {
     const { isAuthenticated } = useSelector((state) => state.auth);
+    const { type } = useSelector((state) => state.tech);
+
     return (
         <NavigationContainer>
             {!isAuthenticated && <UnauthenticatedStack />}
-            {isAuthenticated && <TechTabNavigator />}
+            {isAuthenticated && type === "tech" ? (
+                <TechTabNavigator />
+            ) : (
+                <ClientTabNavigator />
+            )}
         </NavigationContainer>
     );
 }

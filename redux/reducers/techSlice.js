@@ -1,8 +1,10 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    id: null,    
+    id: null,
     name: "",
+    type: "tech",
     location: {
         long: "",
         lat: "",
@@ -16,7 +18,7 @@ export const techSlice = createSlice({
     name: "tech",
     initialState,
     reducers: {
-        createTechProfile: (state, action) => {            
+        createTechProfile: (state, action) => {
             state.name = action.payload.name;
             state.isLoggedIn = action.payload.isLoggedIn;
         },
