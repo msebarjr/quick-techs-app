@@ -14,7 +14,11 @@ async function authenticate(mode, email, password) {
 }
 
 export function createUser(email, password) {
-    return authenticate("signUp", email, password);
+    const token = authenticate("signUp", email, password);
+
+    
+
+    return token;
 }
 
 export function loginUser(email, password) {

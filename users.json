@@ -1,0 +1,49 @@
+users:[
+  clients:[
+    id: "",
+    name: "",
+    address: {
+      long: "",
+      lat: ""
+    },
+    projects: [
+      {
+        id: "",
+        serviceType: "",
+        description: "",
+        dateCreated: new Date,
+        dateCompleted: new Date,
+        status: "",
+        isPending: Boolean,
+        isInProgress: Boolean,
+        isCompleted: Boolean,
+        assignedTo: "",
+      }
+    ]   
+  ],
+  techs:[
+    id: "",
+    name: "",
+    location: {
+      long: "",
+      lat: ""
+    },
+    isLoggedIn: Boolean,
+    jobs: ["", ""],
+    projects: [
+      {
+        id: "",
+        customer: "",
+        serviceType: "",
+        description: "",
+        dateCreated: new Date,
+        dateCompleted: new Date,
+        status: "",
+        isPending: Boolean,
+        isInProgress: Boolean,
+        isCompleted: Boolean,
+        images: []
+      }
+    ]  
+  ]
+]

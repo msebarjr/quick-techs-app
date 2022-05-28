@@ -16,8 +16,8 @@ function TechHomeScreen() {
                 </View>
             </View>
             <TechNotifications />
-            <Button onPress={storeClient} title="Store Client" />
-            <Button onPress={storeTech} title="Store Tech" />
+            <Button onPress={createClient} title="Store Client" />
+            <Button onPress={createTech} title="Store Tech" />
         </View>
     );
 }
