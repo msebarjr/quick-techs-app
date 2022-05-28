@@ -4,16 +4,19 @@ import { useDispatch } from "react-redux";
 
 // Components
 import CustomButton from "../components/UI/CustomButton";
-import CustomDisabledButton from "../components/UI/CustomDisabledButton";
 import IconImage from "../components/IconImage";
 import LoadingOverlay from "../components/UI/LoadingOverlay";
 
-// Utils
-import { createUser } from "../utils/auth";
+// Reducers
 import { authenticate } from "../redux/reducers/authSlice";
+import { createTechProfile } from "../redux/reducers/techSlice";
 
 // Styles
 import styles from "../styles/styles";
+
+// Utils
+import { createUser } from "../utils/auth";
+import { createClient, createTech } from "../utils/http";
 
 function CreateProfileScreen({ route }) {
     const dispatch = useDispatch();
@@ -29,12 +32,13 @@ function CreateProfileScreen({ route }) {
         setIsAuthenticating(true);
 
         try {
-            const token = await createUser(
-                name,
-                email,
-                password,
-                disableClientButton
-            );
+            const token = await createUser(email, password);
+
+            if (disableClientButton) createTech({ name, isLoggedIn: true });
+            else createClient({ name, isLoggedIn: true });
+
+            dispatch(createTechProfile({ token, name, isLoggedIn: true }));
+
             dispatch(authenticate(token));
         } catch (error) {
             Alert.alert("Authentication Failed", "Could not create account.");
@@ -82,19 +86,6 @@ function CreateProfileScreen({ route }) {
             >
                 Technician
             </CustomButton>
-            {/* {disableButton ? (
-                <CustomDisabledButton style={{ marginTop: 100 }} disabled>
-                    Create Account
-                </CustomDisabledButton>
-            ) : (
-                <CustomButton
-                    style={{ marginTop: 100 }}
-                    disabled={disableClientButton && disableTechButton}
-                    onPress={authenticateUser.bind(this, name, email, password)}
-                >
-                    Create Account
-                </CustomButton>
-            )} */}
             <CustomButton
                 style={{ marginTop: 100 }}
                 disabled={disableButton}

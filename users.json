@@ -30,6 +30,7 @@ users:[
     },
     isLoggedIn: Boolean,
     jobs: ["", ""],
+    openJobs: number,
     projects: [
       {
         id: "",
@@ -38,8 +39,7 @@ users:[
         description: "",
         dateCreated: new Date,
         dateCompleted: new Date,
-        status: "",
-        isPending: Boolean,
+        status: "",      
         isInProgress: Boolean,
         isCompleted: Boolean,
         images: []
