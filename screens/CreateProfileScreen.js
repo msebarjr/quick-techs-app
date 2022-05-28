@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 
 // Components
 import CustomButton from "../components/UI/CustomButton";
+import CustomDisabledButton from "../components/UI/CustomDisabledButton";
 import IconImage from "../components/IconImage";
 import LoadingOverlay from "../components/UI/LoadingOverlay";
 
@@ -19,16 +20,22 @@ function CreateProfileScreen({ route }) {
 
     const [disableClientButton, setDisableClientButton] = useState(true);
     const [disableTechButton, setDisableTechButton] = useState(true);
+    const [disableButton, setDisableButton] = useState(true);
     const [isAuthenticating, setIsAuthenticating] = useState(false);
 
-    const { email, password } = route.params;
+    const { name, email, password } = route.params;
 
-    async function authenticateUser(email, password) {
+    async function authenticateUser(name, email, password) {
         setIsAuthenticating(true);
 
         try {
-            const token = await createUser(email, password);
-            dispatch(authenticate(token));            
+            const token = await createUser(
+                name,
+                email,
+                password,
+                disableClientButton
+            );
+            dispatch(authenticate(token));
         } catch (error) {
             Alert.alert("Authentication Failed", "Could not create account.");
             setIsAuthenticating(false);
@@ -46,11 +53,13 @@ function CreateProfileScreen({ route }) {
     function clientSelectHandler() {
         setDisableClientButton(false);
         setDisableTechButton(true);
+        setDisableButton(false);
     }
 
     function techSelectHandler() {
         setDisableTechButton(false);
         setDisableClientButton(true);
+        setDisableButton(false);
     }
 
     return (
@@ -61,22 +70,36 @@ function CreateProfileScreen({ route }) {
             <Text style={styles.centerText}>Upload Photo</Text>
             <Text style={styles.heading}>Choose Account Type:</Text>
             <CustomButton
-                disabled={disableClientButton}
+                disableStyle={disableClientButton}
                 onPress={clientSelectHandler}
             >
                 Client
             </CustomButton>
             <CustomButton
                 style={{ marginTop: 15 }}
-                disabled={disableTechButton}
+                disableStyle={disableTechButton}
                 onPress={techSelectHandler}
             >
                 Technician
             </CustomButton>
+            {/* {disableButton ? (
+                <CustomDisabledButton style={{ marginTop: 100 }} disabled>
+                    Create Account
+                </CustomDisabledButton>
+            ) : (
+                <CustomButton
+                    style={{ marginTop: 100 }}
+                    disabled={disableClientButton && disableTechButton}
+                    onPress={authenticateUser.bind(this, name, email, password)}
+                >
+                    Create Account
+                </CustomButton>
+            )} */}
             <CustomButton
                 style={{ marginTop: 100 }}
-                disabled={disableClientButton && disableTechButton}
-                onPress={authenticateUser.bind(this, email, password)}
+                disabled={disableButton}
+                disableStyle={disableClientButton && disableTechButton}
+                onPress={authenticateUser.bind(this, name, email, password)}
             >
                 Create Account
             </CustomButton>

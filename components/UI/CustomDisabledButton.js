@@ -3,27 +3,20 @@ import { Pressable, View, Text } from "react-native";
 // Styles
 import styles from "../../styles/styles";
 
-function CustomButton({
+function CustomDisabledButton({
     children,
-    onPress,
     disabled,
-    disableStyle,
     remove,
     transparent,
     style,
 }) {
     return (
         <View style={style}>
-            <Pressable
-                disabled={disabled}
-                onPress={onPress}
-                style={({ pressed }) => pressed && styles.iosPressed}
-                android_ripple
-            >
+            <Pressable disabled={true}>
                 <View
                     style={[
                         styles.button,
-                        disableStyle && styles.disabled,
+                        disabled && styles.disabled,
                         remove && styles.remove,
                         transparent && styles.transparent,
                     ]}
@@ -31,7 +24,7 @@ function CustomButton({
                     <Text
                         style={[
                             styles.buttonText,
-                            disableStyle && styles.disabledText,
+                            disabled && styles.disabledText,
                             transparent && styles.transparentText,
                         ]}
                     >
@@ -43,4 +36,4 @@ function CustomButton({
     );
 }
 
-export default CustomButton;
+export default CustomDisabledButton;
