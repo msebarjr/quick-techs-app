@@ -8,25 +8,22 @@ const initialState = {
         long: "",
         lat: "",
     },
-    isLoggedIn: false,
-    jobs: [],
     projects: [],
 };
 
-export const techSlice = createSlice({
-    name: "tech",
+export const clientSlice = createSlice({
+    name: "client",
     initialState,
     reducers: {
-        createTechProfile: (state, action) => {
+        createClientProfile: (state, action) => {
             state.name = action.payload.name;
-            state.isLoggedIn = action.payload.isLoggedIn;
         },
-        updateTechId: (state, action) => {
+        updateClientId: (state, action) => {
             state.id = action.payload.id;
         },
     },
 });
 
-export const { createTechProfile, updateTechId } = techSlice.actions;
+export const { createClientProfile, updateClientId } = clientSlice.actions;
 
-export default techSlice.reducer;
+export default clientSlice.reducer;

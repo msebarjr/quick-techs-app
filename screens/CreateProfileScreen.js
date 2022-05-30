@@ -10,13 +10,15 @@ import LoadingOverlay from "../components/UI/LoadingOverlay";
 // Reducers
 import { authenticate } from "../redux/reducers/authSlice";
 import { createTechProfile } from "../redux/reducers/techSlice";
+import { createClientProfile } from "../redux/reducers/clientSlice";
+import { createUserProfile } from "../redux/reducers/usersSlice";
 
 // Styles
 import styles from "../styles/styles";
 
 // Utils
 import { createUser } from "../utils/auth";
-import { createClient, createTech } from "../utils/http";
+import { createTech, createClient } from "../utils/http";
 
 function CreateProfileScreen({ route }) {
     const dispatch = useDispatch();
@@ -29,17 +31,32 @@ function CreateProfileScreen({ route }) {
     const { name, email, password } = route.params;
 
     async function authenticateUser(name, email, password) {
+        let profileType = "";
         setIsAuthenticating(true);
 
         try {
             const token = await createUser(email, password);
 
-            if (disableClientButton) createTech({ name, isLoggedIn: true });
-            else createClient({ name, isLoggedIn: true });
+            if (disableClientButton) {
+                profileType = "tech";
+                createTech({ name, email, isLoggedIn: true });
+            } else {
+                profileType = "client";
+                createClient({ name, email });
+            }
 
-            dispatch(createTechProfile({ name, isLoggedIn: true }));
+            dispatch(
+                createUserProfile({
+                    name,
+                    email,
+                    type: profileType,
+                    isLoggedIn: true,
+                })
+            );
+           
             dispatch(authenticate(token));
         } catch (error) {
+            console.log(JSON.stringify(error));
             Alert.alert("Authentication Failed", "Could not create account.");
             setIsAuthenticating(false);
         }

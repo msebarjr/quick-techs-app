@@ -2,6 +2,10 @@ import { StyleSheet } from "react-native";
 import GlobalStyles from "./globals";
 
 const styles = StyleSheet.create({
+    backgroundImageWrapper: {
+        width: "100%",
+        height: 275,
+    },
     button: {
         borderRadius: 5,
         padding: GlobalStyles.spacing.xs * 1.5,

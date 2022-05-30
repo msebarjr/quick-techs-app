@@ -10,6 +10,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import LoadingOverlay from "./components/UI/LoadingOverlay";
 
 // Navigation
+import ClientTabNavigator from "./navigation/client/ClientTabNavigator";
 import TechTabNavigator from "./navigation/tech/TechTabNavigator";
 
 // Screens
@@ -24,7 +25,6 @@ import styles from "./styles/styles";
 // Utils
 import { login } from "./redux/reducers/authSlice";
 import { store } from "./redux/store";
-import ClientTabNavigator from "./navigation/client/ClientTabNavigator";
 
 const Stack = createNativeStackNavigator();
 
@@ -62,16 +62,15 @@ function UnauthenticatedStack() {
 
 function Navigation() {
     const { isAuthenticated } = useSelector((state) => state.auth);
-    const { type } = useSelector((state) => state.tech);
+
+    // const techProfile = isAuthenticated && profileType === "tech";
+    // const clientProfile = isAuthenticated && profileType === "client";
 
     return (
         <NavigationContainer>
             {!isAuthenticated && <UnauthenticatedStack />}
-            {isAuthenticated && type === "tech" ? (
-                <TechTabNavigator />
-            ) : (
-                <ClientTabNavigator />
-            )}
+            {/* {techProfile && <TechTabNavigator />} */}
+            {isAuthenticated && <ClientTabNavigator />}
         </NavigationContainer>
     );
 }
@@ -99,7 +98,7 @@ export default function App() {
     return (
         <Provider store={store}>
             <View style={styles.rootContainer}>
-                <StatusBar style="light" />
+                <StatusBar style="auto" />
                 <Root />
             </View>
         </Provider>

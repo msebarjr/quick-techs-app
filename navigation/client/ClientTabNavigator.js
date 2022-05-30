@@ -21,6 +21,8 @@ function ClientTabNavigator() {
     return (
         <Tab.Navigator
             screenOptions={{
+                headerStyle: { backgroundColor: GlobalStyles.colors.primary },
+                headerTintColor: "white",
                 tabBarStyle: {
                     backgroundColor: GlobalStyles.colors.primary,
                     height: 55,
@@ -35,7 +37,7 @@ function ClientTabNavigator() {
                 name="ClientHomeTab"
                 component={ClientStackNavigator}
                 options={{
-                    title: "Home",
+                    headerShown: false,
                     tabBarLabel: "Home",
                     tabBarIcon: ({ color, size }) => (
                         <Ionicons name="home" size={size} color={color} />

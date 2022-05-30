@@ -1,9 +1,10 @@
 import { View, Text } from "react-native";
+import BackgroundImage from "../../components/BackgroundImage";
 
 function ClientHomeScreen() {
     return (
         <View>
-            <Text>CustomerHomeScreen</Text>
+            <BackgroundImage />
         </View>
     );
 }
