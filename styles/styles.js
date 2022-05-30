@@ -5,6 +5,8 @@ const styles = StyleSheet.create({
     backgroundImageWrapper: {
         width: "100%",
         height: 275,
+        position: "relative",
+        zIndex: -1,
     },
     button: {
         borderRadius: 5,
@@ -21,6 +23,22 @@ const styles = StyleSheet.create({
         textAlign: "center",
         marginTop: GlobalStyles.spacing.xs,
     },
+    clientGreeting: {
+        paddingVertical: GlobalStyles.spacing.small,
+        paddingHorizontal: GlobalStyles.spacing.large,
+        backgroundColor: GlobalStyles.colors.secondary,
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+    },
+    clientName: {
+        color: "white",
+    },
+    clientWelcomeText: {
+        flexDirection: "row",
+        flex: 1,
+        marginLeft: GlobalStyles.spacing.large,
+    },
     container: {
         flex: 1,
         paddingHorizontal: GlobalStyles.spacing.medium,
@@ -31,6 +49,10 @@ const styles = StyleSheet.create({
     },
     disabledText: {
         color: "rgba(255, 255, 255, .5)",
+    },
+    flexCenter: {
+        justifyContent: "center",
+        alignItems: "center",
     },
     flexContainer: {
         flex: 1,
@@ -86,6 +108,27 @@ const styles = StyleSheet.create({
     rootContainer: {
         flex: 1,
         justifyContent: "center",
+    },
+    searchBar: {
+        backgroundColor: "white",
+        borderRadius: 30,
+        width: "100%",
+        height: 45,
+        alignSelf: "center",
+        elevation: 10,
+        shadowColor: "black",
+        shadowOffset: 10,
+        shadowOpacity: 1,
+        shadowRadius: 30,
+        justifyContent: "center",
+        paddingHorizontal: GlobalStyles.spacing.large,
+    },
+    searchBarText: {
+        color: GlobalStyles.colors.faded,
+    },
+    searchBarWrapper: {
+        marginTop: -100,
+        marginHorizontal: GlobalStyles.spacing.medium,
     },
     techHomeGreeting: {
         width: "100%",

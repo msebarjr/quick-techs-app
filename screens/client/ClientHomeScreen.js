@@ -1,10 +1,23 @@
-import { View, Text } from "react-native";
-import BackgroundImage from "../../components/BackgroundImage";
+import { View } from "react-native";
 
-function ClientHomeScreen() {
+import BackgroundImage from "../../components/BackgroundImage";
+import ClientGreeting from "../../components/Client/ClientGreeting";
+import SearchBar from "../../components/UI/SearchBar";
+
+function ClientHomeScreen({ navigation }) {
+    function searchBarHandler() {
+        navigation.navigate("SearchBarScreen");
+    }
+
     return (
         <View>
-            <BackgroundImage />
+            <BackgroundImage>
+                <SearchBar onPress={searchBarHandler}>
+                    Find a Tech Quick...
+                </SearchBar>
+            </BackgroundImage>
+
+            <ClientGreeting />
         </View>
     );
 }

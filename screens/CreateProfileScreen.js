@@ -9,8 +9,6 @@ import LoadingOverlay from "../components/UI/LoadingOverlay";
 
 // Reducers
 import { authenticate } from "../redux/reducers/authSlice";
-import { createTechProfile } from "../redux/reducers/techSlice";
-import { createClientProfile } from "../redux/reducers/clientSlice";
 import { createUserProfile } from "../redux/reducers/usersSlice";
 
 // Styles
@@ -53,7 +51,7 @@ function CreateProfileScreen({ route }) {
                     isLoggedIn: true,
                 })
             );
-           
+
             dispatch(authenticate(token));
         } catch (error) {
             console.log(JSON.stringify(error));

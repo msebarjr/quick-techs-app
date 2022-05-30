@@ -4,6 +4,10 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import ClientHomeScreen from "../../screens/client/ClientHomeScreen";
 import ClientProjectsScreen from "../../screens/client/ClientProjectsScreen";
 import ClientSearchScreen from "../../screens/client/ClientSearchScreen";
+import SearchBarScreen from "../../screens/client/SearchBarScreen";
+
+// Styles
+import GlobalStyles from "../../styles/globals";
 
 const Stack = createNativeStackNavigator();
 
@@ -18,6 +22,18 @@ function ClientStackNavigator() {
             <Stack.Screen
                 name="ClientHomeScreen"
                 component={ClientHomeScreen}
+            />
+            <Stack.Screen
+                name="SearchBarScreen"
+                component={SearchBarScreen}
+                options={{
+                    headerShown: true,
+                    headerTitle: "Search Technician",
+                    headerStyle: {
+                        backgroundColor: GlobalStyles.colors.primary,
+                    },
+                    headerTintColor: "white",
+                }}
             />
         </Stack.Navigator>
     );
