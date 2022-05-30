@@ -1,0 +1,1 @@
+check if email is being used when creating a new user

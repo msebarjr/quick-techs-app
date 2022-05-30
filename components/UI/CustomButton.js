@@ -7,6 +7,7 @@ function CustomButton({
     children,
     onPress,
     disabled,
+    disableStyle,
     remove,
     transparent,
     style,
@@ -14,6 +15,7 @@ function CustomButton({
     return (
         <View style={style}>
             <Pressable
+                disabled={disabled}
                 onPress={onPress}
                 style={({ pressed }) => pressed && styles.iosPressed}
                 android_ripple
@@ -21,7 +23,7 @@ function CustomButton({
                 <View
                     style={[
                         styles.button,
-                        disabled && styles.disabled,
+                        disableStyle && styles.disabled,
                         remove && styles.remove,
                         transparent && styles.transparent,
                     ]}
@@ -29,7 +31,7 @@ function CustomButton({
                     <Text
                         style={[
                             styles.buttonText,
-                            disabled && styles.disabledText,
+                            disableStyle && styles.disabledText,
                             transparent && styles.transparentText,
                         ]}
                     >

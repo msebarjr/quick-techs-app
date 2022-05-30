@@ -47,6 +47,7 @@ function SignupScreen({ navigation }) {
         }
 
         navigation.navigate("Create Profile", {
+            name: name,
             email: email,
             password: password,
         });

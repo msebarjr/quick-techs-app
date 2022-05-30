@@ -7,8 +7,11 @@ import { Provider, useDispatch, useSelector } from "react-redux";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 // Components
-import IconButton from "./components/UI/IconButton";
 import LoadingOverlay from "./components/UI/LoadingOverlay";
+
+// Navigation
+import ClientTabNavigator from "./navigation/client/ClientTabNavigator";
+import TechTabNavigator from "./navigation/tech/TechTabNavigator";
 
 // Screens
 import CreateProfileScreen from "./screens/CreateProfileScreen";
@@ -22,7 +25,6 @@ import styles from "./styles/styles";
 // Utils
 import { login } from "./redux/reducers/authSlice";
 import { store } from "./redux/store";
-import TechTabNavigator from "./navigation/tech/TechTabNavigator";
 
 const Stack = createNativeStackNavigator();
 
@@ -58,44 +60,17 @@ function UnauthenticatedStack() {
     );
 }
 
-// function TechStackNavigator() {
-//     const dispatch = useDispatch();
-
-//     return (
-//         <Stack.Navigator
-//             screenOptions={{
-//                 animation: "slide_from_right",
-//                 headerStyle: {
-//                     backgroundColor: GlobalStyles.colors.primary,
-//                 },
-//                 headerTintColor: "white",
-//                 headerRight: ({ tintColor }) => (
-//                     <IconButton
-//                         icon="exit"
-//                         color={tintColor}
-//                         size={24}
-//                         onPress={() => dispatch(logout())}
-//                     />
-//                 ),
-//             }}
-//         >
-//             <Stack.Screen
-//                 name="TechHome"
-//                 component={TechHomeScreen}
-//                 options={{
-//                     title: "Welcome",
-//                 }}
-//             />
-//         </Stack.Navigator>
-//     );
-// }
-
 function Navigation() {
     const { isAuthenticated } = useSelector((state) => state.auth);
+
+    // const techProfile = isAuthenticated && profileType === "tech";
+    // const clientProfile = isAuthenticated && profileType === "client";
+
     return (
         <NavigationContainer>
             {!isAuthenticated && <UnauthenticatedStack />}
-            {isAuthenticated && <TechTabNavigator />}
+            {/* {techProfile && <TechTabNavigator />} */}
+            {isAuthenticated && <ClientTabNavigator />}
         </NavigationContainer>
     );
 }
@@ -123,7 +98,7 @@ export default function App() {
     return (
         <Provider store={store}>
             <View style={styles.rootContainer}>
-                <StatusBar style="light" />
+                <StatusBar style="auto" />
                 <Root />
             </View>
         </Provider>
