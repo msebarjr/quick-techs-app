@@ -25,7 +25,7 @@ function ClientGreeting() {
 
             <View style={styles.clientWelcomeText}>
                 <Text style={{ fontSize: 16 }}>Welcome, </Text>
-                <Text style={styles.clientName}>{name}</Text>
+                <Text style={styles.clientName}>Michael</Text>
             </View>
             <View style={styles.flexCenter}>
                 <IconButton

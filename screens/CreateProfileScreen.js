@@ -8,7 +8,7 @@ import IconImage from "../components/IconImage";
 import LoadingOverlay from "../components/UI/LoadingOverlay";
 
 // Reducers
-import { authenticate } from "../redux/reducers/authSlice";
+import { authenticate, setProfile } from "../redux/reducers/authSlice";
 import { createUserProfile } from "../redux/reducers/usersSlice";
 
 // Styles
@@ -25,21 +25,21 @@ function CreateProfileScreen({ route }) {
     const [disableTechButton, setDisableTechButton] = useState(true);
     const [disableButton, setDisableButton] = useState(true);
     const [isAuthenticating, setIsAuthenticating] = useState(false);
+    const [profileType, setProfileType] = useState("");
 
     const { name, email, password } = route.params;
 
     async function authenticateUser(name, email, password) {
-        let profileType = "";
         setIsAuthenticating(true);
 
         try {
             const token = await createUser(email, password);
 
             if (disableClientButton) {
-                profileType = "tech";
+                setProfileType("tech");
                 createTech({ name, email, isLoggedIn: true });
             } else {
-                profileType = "client";
+                setProfileType("client");
                 createClient({ name, email });
             }
 
@@ -52,9 +52,9 @@ function CreateProfileScreen({ route }) {
                 })
             );
 
+            dispatch(setProfile(profileType));
             dispatch(authenticate(token));
         } catch (error) {
-            console.log(JSON.stringify(error));
             Alert.alert("Authentication Failed", "Could not create account.");
             setIsAuthenticating(false);
         }

@@ -11,11 +11,10 @@ export const authSlice = createSlice({
     initialState,
     reducers: {
         authenticate: (state, action) => {
-            state.token = action.payload;
+            state.token = action.payload.token;
             state.isAuthenticated = !!state.token;
             AsyncStorage.setItem("token", state.token);
         },
-
         login: (state, action) => {
             state.token = action.payload;
             state.isAuthenticated = !!state.token;
@@ -28,6 +27,7 @@ export const authSlice = createSlice({
     },
 });
 
-export const { authenticate, login, logout } = authSlice.actions;
+export const { authenticate, authenticateProfile, login, logout, setProfile } =
+    authSlice.actions;
 
 export default authSlice.reducer;

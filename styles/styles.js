@@ -4,7 +4,6 @@ import GlobalStyles from "./globals";
 const styles = StyleSheet.create({
     backgroundImageWrapper: {
         width: "100%",
-        height: 275,
         position: "relative",
         zIndex: -1,
     },
@@ -25,7 +24,7 @@ const styles = StyleSheet.create({
     },
     clientGreeting: {
         paddingVertical: GlobalStyles.spacing.small,
-        paddingHorizontal: GlobalStyles.spacing.large,
+        paddingHorizontal: GlobalStyles.spacing.medium,
         backgroundColor: GlobalStyles.colors.secondary,
         flexDirection: "row",
         justifyContent: "space-between",
@@ -33,11 +32,11 @@ const styles = StyleSheet.create({
     },
     clientName: {
         color: "white",
+        fontWeight: "bold",
     },
     clientWelcomeText: {
-        flexDirection: "row",
         flex: 1,
-        marginLeft: GlobalStyles.spacing.large,
+        marginLeft: GlobalStyles.spacing.small,
     },
     container: {
         flex: 1,
@@ -127,8 +126,10 @@ const styles = StyleSheet.create({
         color: GlobalStyles.colors.faded,
     },
     searchBarWrapper: {
-        marginTop: -100,
-        marginHorizontal: GlobalStyles.spacing.medium,
+        width: "80%",
+        position: "absolute",
+        alignSelf: "center",
+        bottom: 30,
     },
     techHomeGreeting: {
         width: "100%",
