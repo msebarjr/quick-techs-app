@@ -18,6 +18,22 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         textTransform: "uppercase",
     },
+    category: {
+        marginHorizontal: GlobalStyles.spacing.xs,
+        width: 150,
+        height: 200,
+        borderRadius: 6,
+        backgroundColor: "white",
+        shadowColor: "#333",
+        shadowOffset: {
+            width: 1,
+            height: 1,
+        },
+        shadowOpacity: 1,
+        shadowRadius: 6,
+        elevation: 2,
+        overflow: "hidden",
+    },
     centerText: {
         textAlign: "center",
         marginTop: GlobalStyles.spacing.xs,
@@ -90,6 +106,13 @@ const styles = StyleSheet.create({
     inputInvalid: {
         backgroundColor: GlobalStyles.colors.error,
     },
+    jobTextWrapper: {
+        height: "30%",
+        width: "100%",
+        justifyContent: "center",
+        alignItems: "center",
+        overflow: "hidden",
+    },
     logo: {
         alignSelf: "center",
     },
@@ -160,6 +183,12 @@ const styles = StyleSheet.create({
     techWelcomeText: {
         marginTop: GlobalStyles.spacing.small,
         flexDirection: "row",
+    },
+    title: {
+        fontSize: GlobalStyles.size.xl,
+        fontWeight: "bold",
+        marginVertical: GlobalStyles.spacing.large,
+        marginHorizontal: GlobalStyles.spacing.small,
     },
     transparent: {
         backgroundColor: "transparent",

@@ -10,6 +10,7 @@ function SearchBarScreen({ navigation }) {
                 placeholder: "Find Technician",
                 textColor: "white",
                 headerIconColor: "white",
+                barTintColor: "white",
             },
         });
     }, [navigation]);
