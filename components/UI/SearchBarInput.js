@@ -5,7 +5,7 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import styles from "../../styles/styles";
 import GlobalStyles from "../../styles/globals";
 
-function SearchBarInput({ children, style }) {
+function SearchBarInput({ children, style, value, onChangeText }) {
     return (
         <View style={style}>
             <View style={styles.searchBar}>
@@ -15,8 +15,13 @@ function SearchBarInput({ children, style }) {
                     color={GlobalStyles.colors.faded}
                 />
                 <TextInput
-                    style={[styles.searchBarText, { marginLeft: 8 }]}
+                    style={[
+                        styles.searchBarText,
+                        { marginLeft: 8, width: "100%" },
+                    ]}
                     placeholder={children}
+                    value={value}
+                    onChangeText={onChangeText}
                 ></TextInput>
             </View>
         </View>
