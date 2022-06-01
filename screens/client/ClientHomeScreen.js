@@ -1,9 +1,13 @@
 import { ScrollView } from "react-native";
 
+// Components
 import BackgroundImage from "../../components/BackgroundImage";
 import BrowseCategories from "../../components/Client/BrowseCategories";
 import ClientGreeting from "../../components/Client/ClientGreeting";
 import SearchBar from "../../components/UI/SearchBar";
+
+// Styles
+import styles from "../../styles/styles";
 
 function ClientHomeScreen({ navigation }) {
     function searchBarHandler() {
@@ -13,7 +17,10 @@ function ClientHomeScreen({ navigation }) {
     return (
         <ScrollView alwaysBounceVertical={false}>
             <BackgroundImage>
-                <SearchBar onPress={searchBarHandler}>
+                <SearchBar
+                    onPress={searchBarHandler}
+                    style={styles.searchBarWrapper}
+                >
                     Find a Tech Quick...
                 </SearchBar>
             </BackgroundImage>

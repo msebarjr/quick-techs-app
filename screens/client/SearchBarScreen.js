@@ -1,23 +1,32 @@
-import { useEffect } from "react";
-import { View, Text } from "react-native";
+import { ScrollView, View } from "react-native";
+
+// Components
+import SearchBarInput from "../../components/UI/SearchBarInput";
+import TechSearchItem from "../../components/Client/TechSearchItem";
+
+// Data
+import { jobs } from "../../data/techJobsData";
+
+// Styles
+import styles from "../../styles/styles";
 
 function SearchBarScreen({ navigation }) {
-    useEffect(() => {
-        navigation.setOptions({
-            headerSearchBarOptions: {
-                autoFocus: true,
-                hideWhenScrolling: false,
-                placeholder: "Find Technician",
-                textColor: "white",
-                headerIconColor: "white",
-                barTintColor: "white",
-            },
-        });
-    }, [navigation]);
-
+    function searchHandler() {}
+    
     return (
         <View>
-            <Text>SearchBarScreen</Text>
+            <SearchBarInput style={styles.clientSearchWrapper}>
+                Find Technician
+            </SearchBarInput>
+            <ScrollView>
+                {jobs.map((job) => (
+                    <TechSearchItem
+                        key={job.id}
+                        service={job.title}
+                        onPress={searchHandler}
+                    />
+                ))}
+            </ScrollView>
         </View>
     );
 }

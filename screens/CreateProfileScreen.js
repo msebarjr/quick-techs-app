@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Alert, Pressable, Text, View } from "react-native";
 import { useDispatch } from "react-redux";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 // Components
 import CustomButton from "../components/UI/CustomButton";
@@ -52,7 +53,6 @@ function CreateProfileScreen({ route }) {
                 })
             );
 
-            dispatch(setProfile(profileType));
             dispatch(authenticate(token));
         } catch (error) {
             Alert.alert("Authentication Failed", "Could not create account.");

@@ -3,9 +3,9 @@ import { Pressable, Text, View } from "react-native";
 // Styles
 import styles from "../../styles/styles";
 
-function SearchBar({ children, onPress }) {
+function SearchBar({ children, onPress, style }) {
     return (
-        <View style={styles.searchBarWrapper}>
+        <View style={style}>
             <Pressable
                 onPress={onPress}
                 style={({ pressed }) => pressed && styles.iosPressed}

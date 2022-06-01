@@ -50,6 +50,11 @@ const styles = StyleSheet.create({
         color: "white",
         fontWeight: "bold",
     },
+    clientSearchWrapper: {
+        width: "90%",
+        alignSelf: "center",
+        marginVertical: GlobalStyles.spacing.medium,
+    },
     clientWelcomeText: {
         flex: 1,
         marginLeft: GlobalStyles.spacing.small,
@@ -106,6 +111,14 @@ const styles = StyleSheet.create({
     inputInvalid: {
         backgroundColor: GlobalStyles.colors.error,
     },
+    jobItem: {
+        width: "100%",
+        paddingHorizontal: GlobalStyles.spacing.medium,
+        marginVertical: GlobalStyles.spacing.small,
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between",
+    },
     jobTextWrapper: {
         height: "30%",
         width: "100%",
@@ -137,13 +150,16 @@ const styles = StyleSheet.create({
         width: "100%",
         height: 45,
         alignSelf: "center",
-        elevation: 10,
+        elevation: 3,
         shadowColor: "black",
-        shadowOffset: 10,
-        shadowOpacity: 1,
-        shadowRadius: 30,
+        shadowOffset: 3,
+        shadowOpacity: 0.25,
+        shadowRadius: 1,
         justifyContent: "center",
         paddingHorizontal: GlobalStyles.spacing.large,
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "flex-start",
     },
     searchBarText: {
         color: GlobalStyles.colors.faded,
