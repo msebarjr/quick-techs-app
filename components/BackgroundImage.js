@@ -1,15 +1,21 @@
-import { View, Image } from "react-native";
+import { View, Image, useWindowDimensions } from "react-native";
 
 // Styles
 import styles from "../styles/styles";
 
-function BackgroundImage() {
+function BackgroundImage({ children }) {
+    const { height } = useWindowDimensions();
+
+    let windowHeight = height * 0.3;
+
     return (
-        <View style={styles.backgroundImageWrapper}>
+        <View style={[{ height: windowHeight }, styles.backgroundImageWrapper]}>
             <Image
                 style={{ width: "100%", height: "100%" }}
                 source={require("../assets/images/clientHomeBackgroundImage.jpg")}
+                resizeMode="cover"
             />
+            {children}
         </View>
     );
 }

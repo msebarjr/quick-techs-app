@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { View, Text } from "react-native";
 import { useSelector } from "react-redux";
 
@@ -9,17 +8,8 @@ import TechNotifications from "../../components/Tech/TechNotifications";
 // Styles
 import styles from "../../styles/styles";
 
-// Utils
-// import { fetchTechProfile } from "../../utils/http";
-
 function TechHomeScreen() {
-    // const { token } = useSelector((state) => state.auth);
-
-    // useEffect(() => {
-    //     fetchTechProfile(token);
-    // }, []);
-
-    const { name } = useSelector((state) => state.tech);
+    const { name } = useSelector((state) => state.user);
 
     return (
         <View>

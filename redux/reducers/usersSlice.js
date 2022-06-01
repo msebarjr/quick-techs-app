@@ -1,3 +1,4 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
@@ -29,6 +30,7 @@ export const userSlice = createSlice({
         },
         loginUser: (state) => {
             state.isLoggedIn = true;
+            AsyncStorage.setItem("user", state.type);
         },
         logoutUser: (state) => {
             state.isLoggedIn = false;

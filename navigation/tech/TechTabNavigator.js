@@ -46,6 +46,7 @@ function TechTabNavigator() {
                         color={tintColor}
                         size={24}
                         onPress={() => dispatch(logout())}
+                        style={{ marginRight: 16, marginTop: 8 }}
                     />
                 ),
             }}

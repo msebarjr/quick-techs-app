@@ -4,13 +4,10 @@ import { Ionicons } from "@expo/vector-icons";
 // Styles
 import styles from "../../styles/styles";
 
-function IconButton({ icon, color, size, onPress }) {
+function IconButton({ icon, color, size, onPress, style }) {
     return (
         <Pressable
-            style={({ pressed }) => [
-                { marginRight: 16, marginTop: 8 },
-                pressed && styles.iosPressed,
-            ]}
+            style={({ pressed }) => [style, pressed && styles.iosPressed]}
             onPress={onPress}
         >
             <Ionicons name={icon} color={color} size={size} />

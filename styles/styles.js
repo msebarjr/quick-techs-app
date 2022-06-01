@@ -4,7 +4,8 @@ import GlobalStyles from "./globals";
 const styles = StyleSheet.create({
     backgroundImageWrapper: {
         width: "100%",
-        height: 275,
+        position: "relative",
+        zIndex: -1,
     },
     button: {
         borderRadius: 5,
@@ -17,9 +18,46 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         textTransform: "uppercase",
     },
+    category: {
+        marginHorizontal: GlobalStyles.spacing.xs,
+        width: 150,
+        height: 200,
+        borderRadius: 6,
+        backgroundColor: "white",
+        shadowColor: "#333",
+        shadowOffset: {
+            width: 1,
+            height: 1,
+        },
+        shadowOpacity: 1,
+        shadowRadius: 6,
+        elevation: 2,
+        overflow: "hidden",
+    },
     centerText: {
         textAlign: "center",
         marginTop: GlobalStyles.spacing.xs,
+    },
+    clientGreeting: {
+        paddingVertical: GlobalStyles.spacing.small,
+        paddingHorizontal: GlobalStyles.spacing.medium,
+        backgroundColor: GlobalStyles.colors.secondary,
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+    },
+    clientName: {
+        color: "white",
+        fontWeight: "bold",
+    },
+    clientSearchWrapper: {
+        width: "90%",
+        alignSelf: "center",
+        marginVertical: GlobalStyles.spacing.medium,
+    },
+    clientWelcomeText: {
+        flex: 1,
+        marginLeft: GlobalStyles.spacing.small,
     },
     container: {
         flex: 1,
@@ -31,6 +69,10 @@ const styles = StyleSheet.create({
     },
     disabledText: {
         color: "rgba(255, 255, 255, .5)",
+    },
+    flexCenter: {
+        justifyContent: "center",
+        alignItems: "center",
     },
     flexContainer: {
         flex: 1,
@@ -69,6 +111,21 @@ const styles = StyleSheet.create({
     inputInvalid: {
         backgroundColor: GlobalStyles.colors.error,
     },
+    jobItem: {
+        width: "100%",
+        paddingHorizontal: GlobalStyles.spacing.medium,
+        marginVertical: GlobalStyles.spacing.small,
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between",
+    },
+    jobTextWrapper: {
+        height: "30%",
+        width: "100%",
+        justifyContent: "center",
+        alignItems: "center",
+        overflow: "hidden",
+    },
     logo: {
         alignSelf: "center",
     },
@@ -86,6 +143,32 @@ const styles = StyleSheet.create({
     rootContainer: {
         flex: 1,
         justifyContent: "center",
+    },
+    searchBar: {
+        backgroundColor: "white",
+        borderRadius: 30,
+        width: "100%",
+        height: 45,
+        alignSelf: "center",
+        elevation: 3,
+        shadowColor: "black",
+        shadowOffset: 3,
+        shadowOpacity: 0.25,
+        shadowRadius: 1,
+        justifyContent: "center",
+        paddingHorizontal: GlobalStyles.spacing.large,
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "flex-start",
+    },
+    searchBarText: {
+        color: GlobalStyles.colors.faded,
+    },
+    searchBarWrapper: {
+        width: "80%",
+        position: "absolute",
+        alignSelf: "center",
+        bottom: 30,
     },
     techHomeGreeting: {
         width: "100%",
@@ -116,6 +199,12 @@ const styles = StyleSheet.create({
     techWelcomeText: {
         marginTop: GlobalStyles.spacing.small,
         flexDirection: "row",
+    },
+    title: {
+        fontSize: GlobalStyles.size.xl,
+        fontWeight: "bold",
+        marginVertical: GlobalStyles.spacing.large,
+        marginHorizontal: GlobalStyles.spacing.small,
     },
     transparent: {
         backgroundColor: "transparent",

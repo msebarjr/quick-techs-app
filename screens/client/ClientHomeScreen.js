@@ -1,11 +1,33 @@
-import { View, Text } from "react-native";
-import BackgroundImage from "../../components/BackgroundImage";
+import { ScrollView } from "react-native";
 
-function ClientHomeScreen() {
+// Components
+import BackgroundImage from "../../components/BackgroundImage";
+import BrowseCategories from "../../components/Client/BrowseCategories";
+import ClientGreeting from "../../components/Client/ClientGreeting";
+import SearchBar from "../../components/UI/SearchBar";
+
+// Styles
+import styles from "../../styles/styles";
+
+function ClientHomeScreen({ navigation }) {
+    function searchBarHandler() {
+        navigation.navigate("SearchBarScreen");
+    }
+
     return (
-        <View>
-            <BackgroundImage />
-        </View>
+        <ScrollView alwaysBounceVertical={false}>
+            <BackgroundImage>
+                <SearchBar
+                    onPress={searchBarHandler}
+                    style={styles.searchBarWrapper}
+                >
+                    Find a Tech Quick...
+                </SearchBar>
+            </BackgroundImage>
+
+            <ClientGreeting />
+            <BrowseCategories />
+        </ScrollView>
     );
 }
 
