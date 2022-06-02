@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import ClientHomeScreen from "../../screens/client/ClientHomeScreen";
 import ClientProjectsScreen from "../../screens/client/ClientProjectsScreen";
 import ClientSearchScreen from "../../screens/client/ClientSearchScreen";
+import CreateTicketScreen from "../../screens/client/CreateTicketScreen";
 import SearchBarScreen from "../../screens/client/SearchBarScreen";
 
 // Styles
@@ -29,6 +30,18 @@ function ClientStackNavigator() {
                 options={{
                     headerShown: true,
                     headerTitle: "Search Technician",
+                    headerStyle: {
+                        backgroundColor: GlobalStyles.colors.primary,
+                    },
+                    headerTintColor: "white",
+                }}
+            />
+            <Stack.Screen
+                name="CreateTicket"
+                component={CreateTicketScreen}
+                options={{
+                    headerShown: true,
+                    headerTitle: "Create Ticket",
                     headerStyle: {
                         backgroundColor: GlobalStyles.colors.primary,
                     },

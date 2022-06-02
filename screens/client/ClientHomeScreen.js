@@ -1,4 +1,5 @@
 import { ScrollView } from "react-native";
+import { getImageSourceProperties } from "react-native/Libraries/Image/ImageSource";
 
 // Components
 import BackgroundImage from "../../components/BackgroundImage";
@@ -16,7 +17,7 @@ function ClientHomeScreen({ navigation }) {
 
     return (
         <ScrollView alwaysBounceVertical={false}>
-            <BackgroundImage>
+            <BackgroundImage home>
                 <SearchBar
                     onPress={searchBarHandler}
                     style={styles.searchBarWrapper}

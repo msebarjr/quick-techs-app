@@ -126,6 +126,11 @@ const styles = StyleSheet.create({
         alignItems: "center",
         overflow: "hidden",
     },
+    jobTitle: {
+        fontSize: GlobalStyles.size.large * 2,
+        alignSelf: "center",
+        marginVertical: GlobalStyles.spacing.large,
+    },
     logo: {
         alignSelf: "center",
     },
