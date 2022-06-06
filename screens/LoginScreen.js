@@ -16,6 +16,7 @@ import { authenticate } from "../redux/reducers/authSlice";
 import styles from "../styles/styles";
 import LoginForm from "../components/Forms/LoginForm";
 import KeyboardAvoidingComponent from "../components/KeyboardAvoidingComponent";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 function LoginScreen({ navigation }) {
     const dispatch = useDispatch();
@@ -37,7 +38,8 @@ function LoginScreen({ navigation }) {
 
         try {
             const token = await loginUser(email, password);
-            dispatch(authenticate(token));
+            const profileType = await AsyncStorage.getItem("user");
+            dispatch(authenticate({ token, profileType }));
         } catch (error) {
             let errorMessage = "";
 

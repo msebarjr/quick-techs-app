@@ -23,7 +23,7 @@ import GlobalStyles from "./styles/globals";
 import styles from "./styles/styles";
 
 // Utils
-import { login } from "./redux/reducers/authSlice";
+import { authenticate } from "./redux/reducers/authSlice";
 import { store } from "./redux/store";
 
 const TECH = "tech";
@@ -85,10 +85,10 @@ function Root() {
     useEffect(() => {
         async function fetchToken() {
             try {
-                const storedToken = await AsyncStorage.getItem("token");
+                const token = await AsyncStorage.getItem("token");
                 const profileType = await AsyncStorage.getItem("user");
-                if (storedToken && profileType) {
-                    dispatch(login({ storedToken, profileType }));
+                if (token && profileType) {
+                    dispatch(authenticate({ token, profileType }));
                 }
                 setIsTryingLogin(false);
             } catch (error) {

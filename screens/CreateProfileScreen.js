@@ -52,7 +52,7 @@ function CreateProfileScreen({ route }) {
                     isLoggedIn: true,
                 })
             );
-
+            console.log(token, profileType);
             await AsyncStorage.setItem("token", token);
             await AsyncStorage.setItem("user", profileType);
             dispatch(authenticate({ token, profileType }));
