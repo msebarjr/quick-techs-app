@@ -2,6 +2,11 @@ import { StyleSheet } from "react-native";
 import GlobalStyles from "./globals";
 
 const styles = StyleSheet.create({
+    address: {
+        height: 40,
+        borderBottomWidth: StyleSheet.hairlineWidth,
+        justifyContent: "center",
+    },
     backgroundImageWrapper: {
         width: "100%",
         position: "relative",
@@ -33,6 +38,10 @@ const styles = StyleSheet.create({
         shadowRadius: 6,
         elevation: 2,
         overflow: "hidden",
+    },
+    center: {
+        width: "90%",
+        alignSelf: "center",
     },
     centerText: {
         textAlign: "center",

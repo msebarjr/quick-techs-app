@@ -23,8 +23,7 @@ import GlobalStyles from "./styles/globals";
 import styles from "./styles/styles";
 
 // Utils
-import { authenticateProfile, login } from "./redux/reducers/authSlice";
-import { loginUser } from "./redux/reducers/usersSlice";
+import { login } from "./redux/reducers/authSlice";
 import { store } from "./redux/store";
 
 const Stack = createNativeStackNavigator();
@@ -63,15 +62,16 @@ function UnauthenticatedStack() {
 
 function Navigation() {
     const { isAuthenticated } = useSelector((state) => state.auth);
+    const { profileType } = useSelector((state) => state.auth);
 
-    // const techProfile = isAuthenticated && type === "tech";
-    // const clientProfile = isAuthenticated && type === "client";
+    const techProfile = isAuthenticated && profileType === "tech";
+    const clientProfile = isAuthenticated && profileType === "client";
 
     return (
         <NavigationContainer>
             {!isAuthenticated && <UnauthenticatedStack />}
-            {/* {techProfile && <TechTabNavigator />} */}
-            {isAuthenticated && <ClientTabNavigator />}
+            {techProfile && <TechTabNavigator />}
+            {clientProfile && <ClientTabNavigator />}
         </NavigationContainer>
     );
 }
@@ -82,13 +82,16 @@ function Root() {
 
     useEffect(() => {
         async function fetchToken() {
-            const storedToken = await AsyncStorage.getItem("token");
-
-            if (storedToken) {
-                dispatch(login(storedToken));
+            try {
+                const storedToken = await AsyncStorage.getItem("token");
+                const profileType = await AsyncStorage.getItem("user");
+                if (storedToken) {
+                    dispatch(login({ storedToken, profileType }));
+                }
+                setIsTryingLogin(false);
+            } catch (error) {
+                console.log(error);
             }
-
-            setIsTryingLogin(false);
         }
 
         fetchToken();

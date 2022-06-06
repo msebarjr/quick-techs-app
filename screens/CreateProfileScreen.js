@@ -26,7 +26,6 @@ function CreateProfileScreen({ route }) {
     const [disableTechButton, setDisableTechButton] = useState(true);
     const [disableButton, setDisableButton] = useState(true);
     const [isAuthenticating, setIsAuthenticating] = useState(false);
-    const [profileType, setProfileType] = useState("");
 
     const { name, email, password } = route.params;
 
@@ -35,12 +34,13 @@ function CreateProfileScreen({ route }) {
 
         try {
             const token = await createUser(email, password);
+            let profileType = "";
 
             if (disableClientButton) {
-                setProfileType("tech");
+                profileType = "tech";
                 createTech({ name, email, isLoggedIn: true });
             } else {
-                setProfileType("client");
+                profileType = "client";
                 createClient({ name, email });
             }
 
@@ -53,7 +53,9 @@ function CreateProfileScreen({ route }) {
                 })
             );
 
-            dispatch(authenticate(token));
+            await AsyncStorage.setItem("token", token);
+            await AsyncStorage.setItem("user", profileType);
+            dispatch(authenticate({ token, profileType }));
         } catch (error) {
             Alert.alert("Authentication Failed", "Could not create account.");
             setIsAuthenticating(false);
