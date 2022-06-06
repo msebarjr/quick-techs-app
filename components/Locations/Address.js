@@ -10,11 +10,18 @@ function Address({ description, fetchDetails, place_id, job }) {
     async function handlePress() {
         const res = await fetchDetails(place_id);
 
-        console.log(res.formatted_address);
+        console.log(res.geometry.location.lat, res.geometry.location.lng);
 
-        const formattedAddress = res.formatted_address;
+        let formattedAddress = res.formatted_address;
+        let addressLatitude = res.geometry.location.lat;
+        let addressLongitude = res.geometry.location.lng;
 
-        navigation.navigate("CreateTicketScreen", { job, formattedAddress });
+        navigation.navigate("CreateTicketScreen", {
+            job,
+            formattedAddress,
+            addressLatitude,
+            addressLongitude,
+        });
     }
     return (
         <Pressable

@@ -2,6 +2,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 // Screens
 import ClientHomeScreen from "../../screens/client/ClientHomeScreen";
+import ClientMapScreen from "../../screens/client/ClientMapScreen";
 import ClientProjectsScreen from "../../screens/client/ClientProjectsScreen";
 import ClientSearchScreen from "../../screens/client/ClientSearchScreen";
 import CreateTicketScreen from "../../screens/client/CreateTicketScreen";
@@ -59,6 +60,13 @@ function ClientStackNavigator() {
                         backgroundColor: GlobalStyles.colors.primary,
                     },
                     headerTintColor: "white",
+                }}
+            />
+            <Stack.Screen
+                name="ClientMapScreen"
+                component={ClientMapScreen}
+                options={{
+                    headerShown: false,
                 }}
             />
         </Stack.Navigator>

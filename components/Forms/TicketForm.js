@@ -7,9 +7,8 @@ import CustomButton from "../UI/CustomButton";
 
 // Styles
 import styles from "../../styles/styles";
-import AddressSearchInput from "../Locations/AddressSearchInput";
 
-function TicketForm() {
+function TicketForm({ onPress }) {
     const [enteredIssue, setEnteredIssue] = useState("");
     const [isInvalid, setIsInvalid] = useState(false);
 
@@ -34,7 +33,10 @@ function TicketForm() {
                 onUpdateValue={issueInputHandler}
                 style={[styles.center, { marginVertical: 50 }]}
             />
-            <CustomButton style={[styles.center, { marginVertical: 25 }]}>
+            <CustomButton
+                onPress={onPress}
+                style={[styles.center, { marginVertical: 25 }]}
+            >
                 Get Service
             </CustomButton>
         </KeyboardAvoidingComponent>
