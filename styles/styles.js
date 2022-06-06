@@ -3,9 +3,9 @@ import GlobalStyles from "./globals";
 
 const styles = StyleSheet.create({
     address: {
-        height: 40,
         borderBottomWidth: StyleSheet.hairlineWidth,
         justifyContent: "center",
+        paddingVertical: GlobalStyles.spacing.small,
     },
     backgroundImageWrapper: {
         width: "100%",

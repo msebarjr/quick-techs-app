@@ -19,7 +19,6 @@ function TicketForm() {
 
     return (
         <KeyboardAvoidingComponent style={{ paddingBottom: 30 }}>
-            <AddressSearchInput />
             <Input
                 config={{
                     autoCapitalize: "sentences",

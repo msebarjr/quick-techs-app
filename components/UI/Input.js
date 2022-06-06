@@ -3,7 +3,7 @@ import { View, TextInput } from "react-native";
 // Styles
 import styles from "../../styles/styles";
 
-function Input({ config, isInvalid, onUpdateValue, value, style }) {
+function Input({ config, isInvalid, onUpdateValue, value, style, children }) {
     return (
         <View
             style={[
@@ -19,6 +19,7 @@ function Input({ config, isInvalid, onUpdateValue, value, style }) {
                 placeholderTextColor={isInvalid && "rgba(198, 40, 40, 1)"}
                 value={value}
             />
+            {children}
         </View>
     );
 }

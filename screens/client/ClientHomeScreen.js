@@ -1,5 +1,4 @@
 import { ScrollView } from "react-native";
-import { getImageSourceProperties } from "react-native/Libraries/Image/ImageSource";
 
 // Components
 import BackgroundImage from "../../components/BackgroundImage";

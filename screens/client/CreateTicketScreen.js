@@ -1,5 +1,4 @@
-import { ScrollView, Text, FlatList } from "react-native";
-import { useRoute } from "@react-navigation/native";
+import { ScrollView, Text } from "react-native";
 
 // Components
 import BackgroundImage from "../../components/BackgroundImage";
@@ -8,25 +7,14 @@ import TicketForm from "../../components/Forms/TicketForm";
 // Styles
 import styles from "../../styles/styles";
 
-// function Header() {
-//     const route = useRoute();
-//     const { job } = route.params;
-//     return (
-//         <View>
-//             <BackgroundImage source={job.source} />
-//             <Text style={styles.jobTitle}>{job.title}</Text>
-//         </View>
-//     );
-// }
-
-function CreateTicketScreen() {
-    const route = useRoute();
-    const { job } = route.params;
+function CreateTicketScreen({ route }) {
+    const { job, formattedAddress } = route.params;
 
     return (
         <ScrollView>
             <BackgroundImage source={job.source} />
             <Text style={styles.jobTitle}>{job.title}</Text>
+            <Text style={styles.centerText}>{formattedAddress}</Text>
             <TicketForm />
         </ScrollView>
     );

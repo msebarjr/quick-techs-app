@@ -26,6 +26,8 @@ import styles from "./styles/styles";
 import { login } from "./redux/reducers/authSlice";
 import { store } from "./redux/store";
 
+const TECH = "tech";
+const CLIENT = "client";
 const Stack = createNativeStackNavigator();
 
 function UnauthenticatedStack() {
@@ -64,8 +66,8 @@ function Navigation() {
     const { isAuthenticated } = useSelector((state) => state.auth);
     const { profileType } = useSelector((state) => state.auth);
 
-    const techProfile = isAuthenticated && profileType === "tech";
-    const clientProfile = isAuthenticated && profileType === "client";
+    const techProfile = isAuthenticated && profileType === TECH;
+    const clientProfile = isAuthenticated && profileType === CLIENT;
 
     return (
         <NavigationContainer>
@@ -85,7 +87,7 @@ function Root() {
             try {
                 const storedToken = await AsyncStorage.getItem("token");
                 const profileType = await AsyncStorage.getItem("user");
-                if (storedToken) {
+                if (storedToken && profileType) {
                     dispatch(login({ storedToken, profileType }));
                 }
                 setIsTryingLogin(false);

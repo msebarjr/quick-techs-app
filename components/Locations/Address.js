@@ -1,13 +1,20 @@
-import { Alert, Text, Pressable } from "react-native";
+import { Text, Pressable } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 // Styles
 import styles from "../../styles/styles";
 
-function Address({ description, fetchDetails, place_id }) {
+function Address({ description, fetchDetails, place_id, job }) {
+    const navigation = useNavigation();
+
     async function handlePress() {
         const res = await fetchDetails(place_id);
 
-        Alert.alert(JSON.stringify(res));
+        console.log(res.formatted_address);
+
+        const formattedAddress = res.formatted_address;
+
+        navigation.navigate("CreateTicketScreen", { job, formattedAddress });
     }
     return (
         <Pressable

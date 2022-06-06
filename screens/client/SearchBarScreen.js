@@ -34,7 +34,7 @@ function SearchBarScreen({ navigation }) {
     }
 
     function searchHandler(job) {
-        navigation.navigate("CreateTicket", { job });
+        navigation.navigate("GetAddressScreen", { job });
     }
 
     return (

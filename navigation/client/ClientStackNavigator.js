@@ -5,6 +5,7 @@ import ClientHomeScreen from "../../screens/client/ClientHomeScreen";
 import ClientProjectsScreen from "../../screens/client/ClientProjectsScreen";
 import ClientSearchScreen from "../../screens/client/ClientSearchScreen";
 import CreateTicketScreen from "../../screens/client/CreateTicketScreen";
+import GetAddressScreen from "../../screens/client/GetAddressScreen";
 import SearchBarScreen from "../../screens/client/SearchBarScreen";
 
 // Styles
@@ -37,7 +38,19 @@ function ClientStackNavigator() {
                 }}
             />
             <Stack.Screen
-                name="CreateTicket"
+                name="GetAddressScreen"
+                component={GetAddressScreen}
+                options={{
+                    headerShown: true,
+                    headerTitle: "Create Ticket",
+                    headerStyle: {
+                        backgroundColor: GlobalStyles.colors.primary,
+                    },
+                    headerTintColor: "white",
+                }}
+            />
+            <Stack.Screen
+                name="CreateTicketScreen"
                 component={CreateTicketScreen}
                 options={{
                     headerShown: true,
