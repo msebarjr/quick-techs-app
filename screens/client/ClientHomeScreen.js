@@ -16,7 +16,7 @@ function ClientHomeScreen({ navigation }) {
 
     return (
         <ScrollView alwaysBounceVertical={false}>
-            <BackgroundImage>
+            <BackgroundImage home>
                 <SearchBar
                     onPress={searchBarHandler}
                     style={styles.searchBarWrapper}

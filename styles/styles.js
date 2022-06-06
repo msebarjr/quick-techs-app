@@ -2,6 +2,11 @@ import { StyleSheet } from "react-native";
 import GlobalStyles from "./globals";
 
 const styles = StyleSheet.create({
+    address: {
+        borderBottomWidth: StyleSheet.hairlineWidth,
+        justifyContent: "center",
+        paddingVertical: GlobalStyles.spacing.small,
+    },
     backgroundImageWrapper: {
         width: "100%",
         position: "relative",
@@ -33,6 +38,10 @@ const styles = StyleSheet.create({
         shadowRadius: 6,
         elevation: 2,
         overflow: "hidden",
+    },
+    center: {
+        width: "90%",
+        alignSelf: "center",
     },
     centerText: {
         textAlign: "center",
@@ -125,6 +134,11 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         overflow: "hidden",
+    },
+    jobTitle: {
+        fontSize: GlobalStyles.size.large * 2,
+        alignSelf: "center",
+        marginVertical: GlobalStyles.spacing.large,
     },
     logo: {
         alignSelf: "center",

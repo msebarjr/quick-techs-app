@@ -33,22 +33,9 @@ function SearchBarScreen({ navigation }) {
         }
     }
 
-    function onChangeHandler(enteredText) {
-        setEnteredValue(enteredText);
-        if (enteredValue !== "") {
-            const newFilteredList = jobs.filter((job) => {
-                Object.values(job)
-                    .join(" ")
-                    .toLowerCase()
-                    .includes(enteredValue.toLocaleLowerCase());
-            });
-            setFilteredJobs(newFilteredList);
-        } else {
-            setFilteredJobs(jobs);
-        }
+    function searchHandler(job) {
+        navigation.navigate("GetAddressScreen", { job });
     }
-
-    function searchHandler() {}
 
     return (
         <View>
@@ -64,7 +51,7 @@ function SearchBarScreen({ navigation }) {
                     <TechSearchItem
                         key={job.id}
                         service={job.title}
-                        onPress={searchHandler}
+                        onPress={searchHandler.bind(this, job)}
                     />
                 ))}
             </ScrollView>
