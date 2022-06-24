@@ -8,6 +8,10 @@ import CustomButton from "../components/UI/CustomButton";
 import IconImage from "../components/IconImage";
 import LoadingOverlay from "../components/UI/LoadingOverlay";
 
+// Firebase
+import { auth } from "../firebase.js";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+
 // Reducers
 import { authenticate, setProfile } from "../redux/reducers/authSlice";
 import { createUserProfile } from "../redux/reducers/usersSlice";
@@ -33,29 +37,35 @@ function CreateProfileScreen({ route }) {
         setIsAuthenticating(true);
 
         try {
-            const token = await createUser(email, password);
-            let profileType = "";
-
-            if (disableClientButton) {
-                profileType = "tech";
-                createTech({ name, email, isLoggedIn: true });
-            } else {
-                profileType = "client";
-                createClient({ name, email });
-            }
-
-            dispatch(
-                createUserProfile({
-                    name,
-                    email,
-                    type: profileType,
-                    isLoggedIn: true,
-                })
+            const user = await createUserWithEmailAndPassword(
+                auth,
+                email,
+                password
             );
-            console.log(token, profileType);
-            await AsyncStorage.setItem("token", token);
-            await AsyncStorage.setItem("user", profileType);
-            dispatch(authenticate({ token, profileType }));
+            console.log(user);
+            // const token = await createUser(email, password);
+            // let profileType = "";
+
+            // if (disableClientButton) {
+            //     profileType = "tech";
+            //     createTech({ name, email, isLoggedIn: true });
+            // } else {
+            //     profileType = "client";
+            //     createClient({ name, email });
+            // }
+
+            // dispatch(
+            //     createUserProfile({
+            //         name,
+            //         email,
+            //         type: profileType,
+            //         isLoggedIn: true,
+            //     })
+            // );
+            // console.log(token, profileType);
+            // await AsyncStorage.setItem("token", token);
+            // await AsyncStorage.setItem("user", profileType);
+            // dispatch(authenticate({ token, profileType }));
         } catch (error) {
             Alert.alert("Authentication Failed", "Could not create account.");
             setIsAuthenticating(false);
