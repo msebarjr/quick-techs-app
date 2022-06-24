@@ -23,7 +23,7 @@ import GlobalStyles from "./styles/globals";
 import styles from "./styles/styles";
 
 // Utils
-import { authenticate } from "./redux/reducers/authSlice";
+// import { authenticate } from "./redux/reducers/authSlice";
 import { store } from "./redux/store";
 
 const TECH = "tech";
